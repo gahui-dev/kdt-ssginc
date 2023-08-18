@@ -30,6 +30,11 @@ public class TypeTest {
 		System.out.println(dNum);
 		dNum= 1.1;
 		System.out.println(dNum);
+		dNum = 3.14;
+		System.out.println(dNum);
+		
+		int iNum = 4000;
+		System.out.println(iNum);
 	}
 
 }
