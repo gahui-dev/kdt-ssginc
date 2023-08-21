@@ -31,7 +31,13 @@ public class CastTest {
 		// 큰 범위에서 작은 범위로는 왜 안들어갈까?
 		// 큰 범위로 공간을 만들어놨는데 작은 범위
 		
-		// 1000 0001
+		int x =1, y =2;
+		char c1 = 'a';
+		final int ONE = 1;
+		System.out.println((int)c1 + ONE);
+		System.out.println(x++);
+		System.out.println(++x + y--);
+		System.out.println(++x / 3 + x * ++y);
 	}
 
 }

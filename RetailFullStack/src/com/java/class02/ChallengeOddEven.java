@@ -1,7 +1,7 @@
 package com.java.class02;
 import java.util.Scanner;
 
-public class challengeOddEven {
+public class ChallengeOddEven {
 
 	public static void main(String[] args) {
 		int number;

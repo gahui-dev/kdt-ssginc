@@ -2,7 +2,7 @@ package com.java.class02;
 
 import java.util.Scanner;
 
-public class challengeArea {
+public class ChallengeArea {
 
 	public static void main(String[] args) {
 		double w, h, area;
