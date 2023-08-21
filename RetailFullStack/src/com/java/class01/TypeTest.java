@@ -35,6 +35,13 @@ public class TypeTest {
 		
 		int iNum = 4000;
 		System.out.println(iNum);
+		
+		char cNum = 65 + 32;
+		System.out.println(cNum);
+		
+		for(char c = 0; c < 128; c++) {
+			System.out.println((int)c + " => " + c);
+		}
 	}
 
 }
