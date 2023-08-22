@@ -8,7 +8,7 @@ public class Challenge_06 {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("화씨 온도를 입력하세요 : ");
 		f = sc.nextDouble();
-		c = 5 / 9 *(f - 32);
+		c = 5 * (f - 32) / 9;
 		System.out.printf("화씨 온도 %d도는 섭씨 온도로 %d도입니다.", f, c);
 	}
 }
