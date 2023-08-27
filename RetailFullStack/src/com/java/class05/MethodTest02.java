@@ -16,7 +16,6 @@ public class MethodTest02 {
 			int number = sc.nextInt();
 			
 			if(number != 13) {
-				getOddEvens(number);
 				String result = getOddEvens(number);
 				System.out.println("입력하신 정수 " + number + "은 " + result + "입니다.");
 			} else {
