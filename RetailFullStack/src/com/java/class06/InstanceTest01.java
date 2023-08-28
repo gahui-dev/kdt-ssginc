@@ -3,14 +3,14 @@ package com.java.class06;
 public class InstanceTest01 {
 
 	public static void main(String[] args) {
-		//Lamp lamp = new Lamp();
-		//lamp.printStatusOfLamp();
+		Lamp lamp = new Lamp();
+		lamp.printStatusOfLamp();
 		
-		//lamp.turnOn();
-		//lamp.printStatusOfLamp();
+		lamp.turnOn();
+		lamp.printStatusOfLamp();
 		
-		//lamp.turnOff();
-		//lamp.printStatusOfLamp();
+		lamp.turnOff();
+		lamp.printStatusOfLamp();
 		
 		// 클래스 타입으로 객체를 만들어냄
 		//Car myCar = new Car();

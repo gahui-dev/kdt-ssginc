@@ -2,9 +2,18 @@ package com.java.class06;
 
 public class Lamp {
 	// 멤버 변수 / 속성 / 필드 / 프로퍼티
-	boolean on = false;
-	boolean off = true;
+	public boolean on = false;
+	private boolean off = true;
+	private String name = "";
 	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		this.name = name + "님";
+	}
+			
 	// 멤버 메서드
 	public void turnOn() {
 		on = true;
