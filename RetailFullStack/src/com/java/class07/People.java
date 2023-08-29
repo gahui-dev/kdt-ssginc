@@ -18,6 +18,10 @@ public class People {
 		return this.name;
 	}
 	
+	//public void setName() {
+	//	this.name = name;
+	//}
+	
 	public int[] getScores() {
 		return this.scores;
 	}
