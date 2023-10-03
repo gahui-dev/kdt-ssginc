@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid</title>
+  <style>
+    .absolute {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+    }
+
+    .long-box {
+      width: 100px;
+      height: 2000px;
+    }
+
+    .back-a {
+      background-image: linear-gradient(cyan, blue);
+    }
+
+    .back-b {
+      background-color: #2f6ef5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="long-box back-a">Box A</div>
+  <div class="box back-b absolute">Box B</div>
+</body>
+
+</html>
