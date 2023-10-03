@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My 9th Page - prompt</title>
+  <script>
+    let msg = "너는 고향이 어디니?";
+    let hometown = "";
+    window.onload = function () {
+      console.log(this)
+      const div_box = document.getElementById("div-box");
+      while (!askQuery()) {
+        msg = "선택하지 않았습니다.재질문입니다.\n고향이 어디니?";
+      }
+      div_box.textContent = hometown;
+    }
+    function askQuery() {
+      hometown = prompt(msg);
+      if (hometown == null) {
+        return confirm("아무것 적지 않았습니다. 맞나요? 확인:종료, 취소:아니오");
+      } else if (hometown.trim() == "") {
+        return confirm("아무것 적지 않았습니다. 맞나요? 확인:종료, 취소:아니오");
+      } else {
+        return true;
+      }
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="div-box"></div>
+</body>
+
+</html>

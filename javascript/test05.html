@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>console.println 만들어보기</title>
+  <script>
+    window.onload = function () {
+      const $input = document.querySelector("input");
+      const $result = document.querySelector("div");
+
+      console.println = function () {
+        $result.innerHTML += $input.value + "<br />";
+        $input.value = "";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <input type="text">
+  <button onclick="console.println()">print</button>
+  <div></div>
+
+</body>
+
+</html>

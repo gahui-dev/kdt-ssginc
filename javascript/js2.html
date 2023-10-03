@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js </title>
+  <script>
+    console.log(window);
+    window.onload = function () {
+      console.log("안녕");
+      sayHello();
+    }
+
+    let cnt = 0;
+    function sayHello() {
+      cnt++;
+      console.log("안녕 자바스크립트야" + cnt);
+    }
+  </script>
+</head>
+
+<body>
+  <p onclick="sayHello();">안녕 나 클릭하면 안부물어줘</p>
+</body>
+
+</html>

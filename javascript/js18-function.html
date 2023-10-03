@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수란?</title>
+  <script>
+    test01 = function (param1, param2, param3) {
+      // 함수 호출시 this = window, 객체 호출시 this = test01
+      this.param1 = param1;
+      this.param2 = param2;
+      this.param3 = param3;
+      console.log(this);
+
+      return this;
+    }
+
+    test01.prototype.print = function () {
+      console.log(this);
+    }
+
+    function test02(param1, param2, param3) {
+      return true;
+      return "";
+      return param1;
+    }
+
+    window.onload = function () {
+      var test = test01("안녕", "자바");
+      console.log(test);
+
+      var test1 = new test01("하이", "생성자");
+      test1.print();
+
+      var test2 = test02("안녕", "안녕2");
+      console.log("test2 - " + test2);
+      console.log(new test02("안녕", "안녕2"));
+
+      (function () {
+        alert("안녕");
+      })();
+
+      console.log(this.location);
+
+      // <button>
+      // var btn3 = document.getElementById("btn3");
+      // btn3.onclick = function () {
+      //   console.log(this);
+      // }
+
+      // window
+      btn3.onclick = () => {
+        console.log(this)
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <button id="btn3">함수3이야</button>
+  <button onclick="javascript:test01()">테스트버튼1</button>
+  <button onclick="javascript:console.log('하이');">테스트버튼2</button>
+  <button onclick="javascript:location.href='http:\/\/naver.com'">네이버 이동</button>
+</body>
+
+</html>

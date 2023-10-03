@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    p:nth-child(2) {
+      background-color: red;
+      color: #f2f2f2;
+    }
+  </style>
+</head>
+
+<body>
+  <p><b>목욕탕 안내원이 말해요</b></p>
+  <p><span id="result"></span>으로 가세요</p>
+
+  <script>
+    // textContent, innerHTML, innerText 차이
+    // append
+
+    let isMan = confirm("목욕탕 안내원이 말합니다. 당신은 남성입니까? (남성: 예 / 여성: 취소)");
+    let result = document.getElementById("result");
+
+    isMan = isMan ? "남탕" : "여탕";
+
+    result.innerText = isMan;
+  </script>
+</body>
+
+</html>

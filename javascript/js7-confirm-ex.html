@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #div-box {
+      background-color: red;
+      color: #f3f3f3;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      let gender = "";
+      const div_box = document.getElementById("div-box");
+      if (confirm("목욕탕 안내원: 성별을 말씀하세요\n ex)확인: 남성, 취소:여성 ")) {
+        gender = "남";
+      } else {
+        gender = "여";
+      }
+
+      div_box.textContent = `${gender}탕으로 가세요`;
+    }
+  </script>
+</head>
+
+<body>
+  <h3>목욕탕 안내원이 말해요</h3>
+  <div id="div-box"></div>
+</body>
+
+</html>

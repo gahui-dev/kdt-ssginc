@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    #wrap1,
+    #wrap2 {
+      width: 100%;
+      height: 200px;
+      background-color: #f2f3f5;
+      margin: 0 auto;
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap1"></div>
+  <hr />
+  <div id="wrap2"></div>
+
+  <script>
+    // 클래스 만들기
+    class DiyDiv {
+      // 클래스 전역변수
+      parentElementId;
+
+      // parentElementId 라는 매개변수를 받는 클래스 생성자
+      // parentElementId는 make 메소드에서 div 를 만들때 대상이 될 부모요소의 아이디
+      constructor(parentElementId) {
+        this.parentElementId = parentElementId;
+      }
+
+      // 클래스 생성자 만들때 전달받아서
+      // 전역변수 parentElementId 에 저장된 아이디 값에 해당하는
+      // Element 요소를 반환하는 메소드
+      getElement() {
+        return document.getElementById(this.parentElementId);
+      }
+
+      // id, width, height, color 라는 매개변수를 받아서
+      // div 를 만들어서 부모요소에 추가하는 메소드
+      make(id, width, height, color) {
+        //div 요소를 만들겠다.
+        const newDiv = document.createElement('div');
+
+        // 새로만들 div 의 속성 (id, width, height, backgroundColor)을 설정
+        newDiv.setAttribute('id', id);
+        newDiv.style.width = width + 'px';
+        newDiv.style.height = height + 'px';
+        newDiv.style.backgroundColor = color;
+
+        // 구분하기위해서 새로만들 div 안에 글자도 넣어주겠다.
+        newDiv.innerHTML = `새로운 div <br />  아이디 : ${id} <br /> 컬러 : ${color} `;
+
+        // 새로만들 div 의 다양한 style 을 지정
+        newDiv.style.display = 'flex';
+        newDiv.style.alignItems = 'center';
+        newDiv.style.justifyContent = 'center';
+        newDiv.style.textAlign = 'center';
+
+        // getElement() 메소드를 호출해서 반환받은 부모요소에 
+        // 자식요소를 추가하는데 그 추가하는 자식요소는
+        // 위에서 생성한 새로운 div 인 "newDiv" 요소
+        this.getElement().appendChild(newDiv);
+      }
+    }
+
+    // 색상값을 랜덤으로 만들어주는 함수
+    function randomColor() {
+      const rColor = Math.floor(Math.random() * 256);
+      const gColor = Math.floor(Math.random() * 256);
+      const bColor = Math.floor(Math.random() * 256);
+      return `rgb(${rColor}, ${gColor}, ${bColor})`;
+    }
+
+    // DiyDiv 클래스를 이용해서 div 를 만들기 위해 DiyDiv 클래스 선언
+    let diyDiv;
+
+    for (let i = 0; i < 6; i++) {
+      // DiyDiv 는 클래스이므로 new 를 이용해서 DiyDiv 클래스의 인스턴스를 생성하고
+      // 생성된 인스턴스를 diyDiv 라는 변수에 저장
+      // 이때 부모요소의 id 를 매개변수로 전달
+      diyDiv = new DiyDiv('wrap1');
+
+      // DiyDiv 클래스의 인스턴스인 diyDiv 에서 make 메소드를 호출하면서
+      // id, width, height, color 라는 매개변수를 전달
+      diyDiv.make('id0' + i, 200, 200, randomColor());
+    }
+  </script>
+</body>
+
+</html>

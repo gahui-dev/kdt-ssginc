@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>배열 console.println 만들기</title>
+  <style>
+    #result {
+      border: 2px solid #000;
+      padding: 1.2rem;
+      word-break: break-word;
+      line-height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+  <script>
+    let array = new Array();
+
+    window.onload = function () {
+      // 오름차순, 내림차순
+      const SORT_ASCENDING = 0;
+      const SORT_DESCENDING = 1;
+
+      const $result = document.getElementById("result");
+
+      // console custom println
+      console.println = function (data) {
+        // console.log("console.println >> " + data);
+        console.log(data);
+        $result.innerHTML += data + "<br />";
+      }
+
+      // 살아있는 객체 array
+      array.makeRandomArray = function (index) {
+        function IndexOf(array, value) {
+          for (let i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+              return value;
+            }
+          }
+          return -1;
+        }
+
+        while (array.length < index) {
+          let randomNumber = Math.floor(Math.random() * index);
+          if (IndexOf(array, randomNumber) == -1) {
+            array.push(randomNumber);
+          }
+        }
+
+        return array;
+      }
+
+      // array 출력
+      array.printArray = function () {
+        for (let i = 0; i < array.length; i++) {
+          let output = array.join(", ");
+          console.log("[" + output + "]");
+        }
+      }
+
+      // reverse 구현
+      array.reverseArray = function () {
+        // from : 배열을 복사
+        let tmp = Array.from(array);
+        for (let i = 0; i < array.length; i++) {
+          array[i] = tmp[array.length - 1 - i];
+        }
+
+        return array;
+        //console.println(array);
+        // console.println(array);
+        // return array;
+      }
+
+      array.sortArray = function (flag) {
+        for (let i = 0; i < this.length; i++) {
+          for (let j = i; j < this.length; j++) {
+            switch (flag) {
+
+              // 오름차순
+              case 0:
+                if (this[i] >= this[j]) {
+                  let tmp = this[i];
+                  this[i] = this[j];
+                  this[j] = tmp;
+                }
+                break;
+
+              // 내림차순
+              case 1:
+                if (this[i] <= this[j]) {
+                  let tmp = this[i];
+                  this[i] = this[j];
+                  this[j] = tmp;
+                }
+                break;
+            }
+          }
+        }
+        return this;
+      };
+
+      console.println("100개의 랜덤 숫자를 추출합니다.");
+      console.println(array.makeRandomArray(100));
+
+      // reverse 구현
+      console.println("추출된 숫자를 거꾸로 출력합니다.");
+      console.println(array.reverseArray());
+
+      // sort 구현
+      // 내림차순, 오름차순
+      console.println("추출된 숫자를 내림차순으로 출력합니다.");
+      console.println(array.sortArray(SORT_DESCENDING));
+
+      console.println("추출된 숫자를 오름차순으로 출력합니다.");
+      console.println(array.sortArray(SORT_ASCENDING));
+    }
+
+  </script>
+</head>
+
+<body>
+  <!-- <button>랜덤 배열 만들기</button> -->
+  <div id="result"></div>
+</body>
+
+</html>

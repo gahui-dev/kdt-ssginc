@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    #wrap,
+    #wrap1 {
+      width: 1210px;
+      height: 210px;
+      padding: 5px;
+    }
+
+    #wrap {
+      background-color: aqua;
+    }
+
+    #wrap1 {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap" style="display: flex;"></div>
+  <hr>
+  <div id="wrap1" style="display: flex;"></div>
+
+  <script>
+    class DiyDiv {
+      // element;
+      parentElementId;
+      id;
+      width;
+      height;
+      color;
+
+      constructor(parentElementId, id, width, height, color) {
+        this.parentElementId = parentElementId;
+        this.id = id;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+      }
+
+      getElement(elementId) {
+        return document.getElementById(elementId);
+      }
+
+      make() {
+        const newDiv = document.createElement(this.element);
+
+        newDiv.setAttribute('id', this.id);
+        newDiv.style.width = this.width + 'px';
+        newDiv.style.height = this.height + 'px';
+        newDiv.style.backgroundColor = this.color;
+
+        newDiv.innerHTML = `새로운 div <br />  아이디 : ${this.id} <br /> 컬러 : ${this.color} `;
+        newDiv.style.display = 'flex';
+        newDiv.style.alignItems = 'center';
+        newDiv.style.justifyContent = 'center';
+        newDiv.style.textAlign = 'center'
+
+        //this.getElement('wrap').appendChild(newDiv);
+        this.getElement(this.parentElementId).appendChild(newDiv);
+      }
+    }
+
+    function randomColor() {
+      const rColor = Math.floor(Math.random() * 256);
+      const gColor = Math.floor(Math.random() * 256);
+      const bColor = Math.floor(Math.random() * 256);
+      return `rgb(${rColor}, ${gColor}, ${bColor})`;
+    }
+
+    let diyDiv;
+
+    for (let i = 0; i < 6; i++) {
+      diyDiv = new DiyDiv('wrap1', 'id0' + i, 200, 200, randomColor());
+      diyDiv.make();
+    }
+  </script>
+</body>
+
+</html>

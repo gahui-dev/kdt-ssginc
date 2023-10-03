@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="wrap"></div>
+
+  <script>
+    class DiyDiv {
+      element;
+      id;
+      width;
+      height;
+      color;
+
+      constructor(element, id, width, height, color) {
+        this.element = element;
+        this.id = id;
+        this.width = width;
+        this.height = height;
+        this.color = color;
+      }
+
+      getElement(elementId) {
+        return document.getElementById(elementId);
+      }
+      //make(id, width, height, color) {
+      make() {
+        console.log(this.id, this.width, this.height, this.color);
+        // innerHTML
+        console.log(this.getElement('wrap'));
+
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = '새로운 DIV.';
+        newDiv.style.backgroundColor = this.randomColor();
+        newDiv.style.width = '200px';
+        newDiv.style.height = '200px';
+        newDiv.style.display = 'inline-block';
+
+        this.getElement('wrap').appendChild(newDiv);
+      }
+
+      randomColor() {
+        const rColor = Math.floor(Math.random() * 256);
+        const gColor = Math.floor(Math.random() * 256);
+        const bColor = Math.floor(Math.random() * 256);
+        return `rgb(${rColor}, ${gColor}, ${bColor})`;
+      }
+    }
+
+    const diyDiv = new DiyDiv('div', 'id01', 200, 200, 'red');
+
+    for (let i = 0; i < 6; i++) {
+      diyDiv.make();
+    }
+  </script>
+</body>
+
+</html>

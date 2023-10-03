@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+
+    window.onload = startOnLoadFunction;
+
+    function startOnLoadFunction() {
+      var arr1 = [];
+      arr1[0] = '안녕';
+      var arr2 = new Array("오징어", "땅콩", "쭈꾸미", "깜자");
+      console.log(arr2);
+      arr2[4] = "포스틱";
+      console.log(arr2);
+      arr2.push("고구마");
+      console.log(arr2);
+      console.log("4" + arr2.pop());
+      console.log("5" + arr2.toString());
+      console.log("6" + arr2.shift());
+      console.log("7" + arr2.toString());
+
+      const listElement = document.getElementsByTagName("li");
+      // console.log(listElement);
+      // listElement[0].textContent = arr2[0];
+      // listElement[1].textContent = arr2[1];
+      // listElement[2].textContent = arr2[2];
+      // listElement[3].textContent = arr2[3];
+      // listElement[4].textContent = arr2[4];
+      // if (arr2[4] == undefined) {
+      //   arr2.push("오징어");
+      // }
+      // listElement[4].textContent = arr2[4];
+
+      for (let i = 0; i < listElement.length; i++) {
+        if (arr2[i] == undefined) {
+          arr2.push("오징어");
+        }
+        listElement[i].textContent = arr2[i];
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script>
+
+    var arr3 = [
+      [1, 2, 3, 4, 5, 6, 7, 8]
+      , [1, 2, 3, 4, 5, 6, 7, 8]
+      , [1, 2, 3, 4, 5555, 6, 7, 8]
+      , [1, 2, 3, 4, 5, 6, 7, 8]
+      , [1, 2, 3, 4, 5, 6, 7, 8]
+      , [1, 2, 3, 4, 5, 6, 7, 8]
+      , [1, 2, 3, 4, 5, 6, 7, 8]
+      , [1, 2, 3, 4, 5, 6, 7, 8]
+      , [1, 2, 3, 4, 5, 6, 7, 8]
+    ];
+    //3차원
+    var arr4 = [
+      [[1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]]
+      , [[1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]]
+      , [[1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]]
+    ];
+
+    //4차원
+    var arr5 = [[
+      [[1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 44444, 5, 6, 7, 8]]
+      , [[1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]]
+      , [[1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]]]
+      , [
+      [[1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]]
+      , [[1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 33333, 7, 8]]
+      , [[1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]
+        , [1, 2, 3, 4, 5, 6, 7, 8]]]
+    ];
+
+    console.log("44444 >> " + arr5[0][0][2][3]) // 44444
+
+    var tmp = arr5[0];
+    tmp = tmp[0];
+    tmp = tmp[2];
+    console.log(tmp[3]);
+
+    tmp = arr5[1];
+    tmp = tmp[1];
+    tmp = tmp[2];
+    console.log(tmp[5]);
+
+    tmp = getArrayField(array,)
+
+    function getArrayField(array, iondex) {
+      return array[index];
+    }
+
+  </script>
+</body>
+
+</html>

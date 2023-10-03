@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="userName" onkeyup="checkedValue(this)"> <br>
+  <input type="button" value="확인하기" onclick="btnClicked(this, 'userName');">
+  <script>
+    function checkedValue(element) {
+      console.log(element);
+      console.log(element.value);
+    }
+
+    function btnClicked(element, targetId) {
+      console.log(element);
+      let inputElement = document.getElementById(targetId);
+      const userName = inputElement.value;
+      console.log(userName);
+
+      if (userName == null && userName.trim() == "") {
+        alert("성명을 입력하세요");
+        inputElement.focus();
+        return;
+      }
+
+      element.value = `${userName}님 버튼을 확인하셨습니다.`;
+      inputElement.disabled = true;
+      element.disabled = true;
+
+
+    }
+  </script>
+</body>
+
+</html>
