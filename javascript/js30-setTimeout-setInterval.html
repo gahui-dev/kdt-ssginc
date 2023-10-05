@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>setInterval setTimeout</title>
+</head>
+
+<body>
+  <script>
+    const callback01 = () => {
+      document.body.innerHTML += "<br> callback 호출"
+    }
+
+    const callback02 = () => {
+
+    }
+
+    console.log(this);
+    setTimeout(() => {
+      console.log("hi")
+    }, 4000);
+
+    setTimeout(callback01, 2000);
+
+    // const intervalId = setInterval(callback01, 1000)
+    // setTImeout(() => {
+    //   clearInterval(intervalId)
+    // }, 5000);
+
+
+  </script>
+</body>
+
+</html>

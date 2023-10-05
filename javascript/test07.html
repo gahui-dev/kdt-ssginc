@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpDownGame</title>
+    <link rel="stylesheet" href="./css/box.css">
+    <style>
+        @font-face {
+            font-family: 'OTWelcomeRA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            font-family: 'OTWelcomeRA';
+        }
+
+        button-list {
+            display: grid;
+            /* grid-template-columns:repeat(10,50px); */
+        }
+
+        #button-list>button {
+            width: 50px;
+            height: 30px;
+            margin: 2px;
+            background-color: black;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+
+        }
+
+        #button-list>button:focus {
+            background-color: lightskyblue;
+        }
+
+        p {
+            font-size: 30px;
+            text-align: center;
+            vertical-align: center;
+            line-height: 50px;
+            width: 550px;
+            height: 40px;
+        }
+
+        #status {
+            resize: none;
+            width: 550px;
+            height: 100px;
+            font-size: 20px;
+            border: 2px solid black;
+        }
+
+        #user-number {
+            line-height: 50px;
+        }
+    </style>
+    <script src="./js/js-sysout.js"></script>
+    <script src="./js/js-timer.js"></script>
+    <script>
+        var answer;
+        var answer_p;
+
+        function inputAnswerRange() {
+            let msg = "정답의 최대 범위를 입력해주세요. (최소범위 : 0, 최대 범위 : 100 ~ 1000)";
+            var answer_range = prompt(msg);
+            if (answer_range == "") {
+                return -1;
+            } else if (isNaN(answer_range)) {
+                return -1;
+            } else if (answer_range < 100) {
+                return -1;
+            } else if (answer_range > 1000) {
+                return -1;
+            } else {
+                return answer_range;
+            }
+        }
+
+        function GameFrame() {
+
+            //타이틀
+            var restart_btn = document.createElement("button");
+            restart_btn.textContent = "다시하기";
+            restart_btn.style.position = "relative";
+            restart_btn.style.left = "10px";
+            document.getElementById("title").appendChild(restart_btn);
+            restart_btn.onclick = retry;
+
+            //사용자 선택값
+            var is_selected = null;
+
+            var user_number_line = document.createElement("span");
+            user_number_line.textContent = "선택 번호 : ";
+            document.getElementById("user-number").appendChild(user_number_line);
+
+
+
+            //버튼 선택
+            let cell = document.getElementById("button-list");
+            let random_scope = Math.floor(Math.random() * 100);
+            if (answer < 100) {
+                // for (var row = 0; row < 10; row++) {
+                // for (var column = 0; column < 10; column++) {
+                // var button = document.createElement("button");
+                // button.className = "btn";
+                // button.textContent = (row * 10 + column) + "";
+                // cell.appendChild(button);
+
+                // }
+                // cell.appendChild(document.createElement("br"));
+                // }
+                console.log("앤써 - " + answer);
+                answer += 100;
+            }
+            let min_scope = answer - random_scope;
+
+            for (var rowLine = 0; rowLine < 10; rowLine++) {
+                for (var column = 0; column < 10; column++) {
+                    var button = document.createElement("button");
+                    button.textContent = min_scope++ + "";
+
+                    cell.appendChild(button);
+                    button.onclick = function () {
+                        btnClicked(this);
+                        showLog(this, min_scope, answer);
+                    }
+                }
+                cell.appendChild(document.createElement("br"));
+            }
+
+            //정답 보기
+            // showAnswer();
+            answer_p = document.getElementById("answer-p");
+            // answer_p.textContent = "정답 미리 보기";
+            // answer_p.style.color = "white";
+            // answer_p.style.backgroundColor = "black";
+            // answer_p.style.alignContent = "center";
+            // document.getElementById("answer").appendChild(answer_p);
+            // answer_p.onclick = function () {
+            //     answer_p.textContent = answer;
+            //     answer_p.style.backgroundColor = "lightskyblue";
+            // }
+            answer_p.onclick = showAnswer();
+
+            //콘솔창
+            var commandLine = document.getElementById("status").textContent = "게임을 시작합니다.\n";
+
+        }
+        function showAnswer() {
+            console.log("test")
+            // var answer_p = document.getElementById("answer-p");
+            // answer_p.textContent = "정답 미리 보기";
+            // answer_p.style.color = "white";
+            // answer_p.style.backgroundColor = "black";
+            // answer_p.style.alignContent = "center";
+            // document.getElementById("answer").appendChild(answer_p);
+
+            // answer_p.textContent = answer;
+            // answer_p.style.backgroundColor = "lightskyblue";
+
+            // answer_p.onclick = function () {
+            // console.log(answer);
+            // }
+        }
+
+        function retry() {
+            var userNumberElement = document.getElementById("user-number");
+            userNumberElement.innerHTML = "선택 번호 :";
+            document.getElementById("status").textContent = "게임을 시작합니다.";
+            history.go(0);
+        }
+
+        function btnClicked(element) {
+            var divElement = document.getElementById("user-number");
+            // console.log(element.innerHTML);
+            divElement.innerHTML = "선택 번호 : " + element.innerHTML;
+        }
+
+        function showLog(element, min_scope) {
+            var button_value = element.innerHTML;
+            var min_user_answer = min_scope - 101;
+            var max_user_answer = min_user_answer + 101;
+            var statusElement = document.getElementById("status");
+            let memo = status.innerHTML;
+            var commandLine = min_user_answer + "<" + button_value + "<" + max_user_answer;
+
+            if (button_value < answer) {
+                // console.log("정답은 더 큰 수 입니다.");
+                // console.log(commandLine);
+                statusElement.innerHTML += "정답은 더 큰 수 입니다.\n";
+                statusElement.innerHTML += commandLine + "\n";
+                // document.getElementById("console").appendChild("")
+            } else if (button_value > answer) {
+                console.log("정답은 더 작은 수 입니다.");
+                console.log(commandLine);
+                statusElement.innerHTML += "정답은 더 작은 수 입니다.\n";
+                statusElement.innerHTML += commandLine + "\n";
+            } else {
+                statusElement.innerHTML += "정답입니다.\n계속하시려면 다시하기를 눌러주세요\n";
+                disabledBtn();
+            }
+
+        }
+
+        function disabledBtn() {
+            let btnElement = document.getElementById("button-list");
+            for (let i = 0; i < btnElement.childElementCount; i++) {
+                btnElement.children[i].disabled = true;
+            }
+        }
+
+        function endProcess() {
+            disabledBtn();
+            var statusElement = document.getElementById("status");
+            statusElement.innerHTML += "시간이 만료되었습니다.\n";
+            showAnswer();
+        }
+
+        window.onload = function () {
+            //값 입력
+            let answer_range = inputAnswerRange();
+            // let answer_range = 900;
+            console.log("정답 범위 : " + answer_range);
+            // var answer;
+            if (answer_range != -1) {
+                answer = Math.floor(Math.random() * answer_range);
+                console.log("정답 : " + answer);
+            } else {
+                document.write("잘못 입력하셨습니다.");
+            }
+            //초기생성
+            GameFrame();
+
+            //시작
+            let discount = 3;
+
+            const timer = new Timer(discount);
+            timer.initTimer();
+
+            if (!timer.discount) {
+                disabledBtn();
+            }
+
+            setTimeout(endProcess, discount * 1000);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="title" style="font-size:30px; font-weight: bold;">업다운 게임<div id="box-div"></div>
+    </div>
+    <div id="user-number"></div>
+    <div id="button-list"></div>
+    <div id="answer">
+        <p id="answer-p">정답 미리 보기</p>
+    </div>
+    <textarea id="status"></textarea>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My 31th Page - setInterval setTimeout - blink</title>
+  <style>
+    #box-div {
+      width: 100px;
+      height: 100px;
+      transition: all .2s;
+    }
+
+    .on-box {
+      background-color: rgb(154, 79, 246);
+      font-size: 50px;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      line-height: 85px;
+    }
+
+    .off-box {
+      background-color: rgb(233, 198, 42);
+      font-size: 50px;
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      line-height: 85px;
+    }
+  </style>
+  <script src="./js/js-sysout.js"></script>
+  <script>
+    let myIntervalId;
+    let box;
+    let disCount = 60;
+    let intervalId;
+
+    window.onload = () => {
+      init();
+      //System.out.clear();
+      box = document.getElementById("box-div");
+      box.open = true;
+
+      blinkOn();
+      intervalId = setInterval(countDown, 1000);
+    }
+
+    function countDown() {
+      if (box.open) {
+        box.open = false;
+        blinkOff();
+      } else {
+        box.open = true;
+        blinkOn();
+      }
+      disCount--;
+      box.textContent = disCount;
+      
+      if(disCount == 0) {
+        clearInterval(intervalId);
+      }
+    }
+
+    function blinkOn() {
+      box.className = "on-box";
+    }
+    function blinkOff() {
+      box.className = "off-box";
+    }
+
+  </script>
+</head>
+
+<body>
+  <div id="box-div">60</div>
+</body>
+
+</html>

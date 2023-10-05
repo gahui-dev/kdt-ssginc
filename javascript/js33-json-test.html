@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let jsonText = '{"firstName": "가희","lastName": "이"}'
+    let jsonObj2 = { firstName: "가희", lastName: "이" }
+    let jsonObj3 = {
+      name: {
+        middleName: "가",
+        firstName: "희"
+      },
+      lastName: "이"
+    }
+
+    let jsonObj4 = {
+      list: [ JSON.parse(jsonText), jsonObj2, jsonObj3]
+    }
+
+    var jsonObj = JSON.parse(jsonText);
+    console.log(jsonObj.firstName);
+
+    console.log(JSON.stringify(jsonObj2))
+    console.log(jsonObj3.name.firstName);
+
+    let list = jsonObj4.list;
+    for(let i = 0; i < list.length; i++) {
+      console.log(list[i]);
+      document.body.append(list[i].lastName + "-" + list[i].firstName)
+    }
+
+    console.log()
+  </script>
+</body>
+
+</html>
