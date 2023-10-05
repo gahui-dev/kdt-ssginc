@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>짝 맞추기 게임</title>
+  <style>
+    #wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+    }
+
+    input {
+      width: 80px;
+      margin-right: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    table tr td {
+      border: 1px solid #000;
+      text-align: center;
+      padding: 20px 40px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+    }
+
+    table tr td:hover {
+      background-color: #f2f3f5;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <h1>짝 맞추기 게임</h1>
+    <!-- 시작 화면 -->
+    <div class="startContainer">
+      <label>
+        행 개수
+        <input type="number" min="2" max="10" value="2" id="rows" />
+      </label>
+      <label>
+        열 개수
+        <input type="number" min="2" max="10" value="2" id="cols" />
+      </label>
+      <button>시작하기</button>
+    </div>
+
+    <!-- 게임 화면 -->
+    <div class="gameContainer"></div>
+  </div>
+  <script>
+    const rowsInput = document.querySelector('#rows');
+    const colsInput = document.querySelector('#cols');
+    const gameContainer = document.querySelector('.gameContainer');
+    const button = document.querySelector('button');
+
+    selectCard = [];
+    clearCard = 0;
+
+    class Puzzle {
+      charPairs = [];
+      table;
+
+      constructor(rows, cols) {
+        this.rows = rows;
+        this.cols = cols;
+        this.table = document.createElement('table');
+      }
+
+      init() {
+        // rows * cols 랜덤 배열 초기화
+        const totalPairs = (this.rows * this.cols) / 2;
+        this.shufflePairs(totalPairs, this.charPairs);
+      }
+
+      shufflePairs(totalPairs, charPairs) {
+        for (let i = 0; i < totalPairs; i++) {
+          // 랜덤 뽑기
+          const randomChar = this.generateRandomChar(charPairs);
+          charPairs.push(randomChar, randomChar);
+        }
+
+        // 중복 확인
+        // console.log(charPairs)
+
+        // 무작위 섞기
+        for (let i = charPairs.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [charPairs[i], charPairs[j]] = [charPairs[j], charPairs[i]];
+        }
+      }
+
+      // 랜덤 뽑기
+      generateRandomChar(charPairs) {
+        const MIN_CHAR_CODE = 65;
+        const MAX_CHAR_CODE = 122;
+        let randomCharCode;
+
+        while (true) {
+          randomCharCode =
+            Math.floor(Math.random() * (MAX_CHAR_CODE - MIN_CHAR_CODE + 1)) +
+            MIN_CHAR_CODE;
+
+          // charPairs 배열에 randomCharCode가 없으면
+          if (!charPairs.includes(String.fromCharCode(randomCharCode))) {
+            // randomCharCode 리턴
+            return String.fromCharCode(randomCharCode);
+          }
+        }
+      }
+
+      start() {
+        this.makeTable(this.rows, this.cols, this.charPairs, this.table);
+
+        rowsInput.disabled = 'false';
+        colsInput.disabled = 'false';
+        button.style.display = 'none';
+      }
+
+      // onCardClick;
+
+      // 테이블 생성
+      makeTable(rows, cols, charPairs, table) {
+        for (let i = 0; i < rows; i++) {
+          const $tr = document.createElement('tr');
+
+          for (let j = 0; j < cols; j++) {
+            const $td = document.createElement('td');
+            $td.style.backgroundColor = 'Yellow';
+            $td.setAttribute('cardvalue', charPairs[i * cols + j]);
+            $tr.appendChild($td);
+            $td.addEventListener('click', (e) => {
+              if (e.srcElement.style.backgroundColor === 'transparent') {
+                return;
+              }
+
+              if (selectCard.length < 3) {
+                selectCard.push(e.srcElement);
+                e.srcElement.style.backgroundColor = 'transparent';
+                e.srcElement.textContent =
+                  e.srcElement.getAttribute('cardvalue');
+                if (selectCard.length === 3) {
+                  for (let k = 0; k < selectCard.length; k++) {
+                    selectCard[k].textContent = '';
+                    selectCard[k].style.backgroundColor = 'yellow';
+                  }
+                  selectCard = [];
+                }
+              } else {
+                selectCard = [];
+              }
+
+              if (selectCard.length === 2) {
+                if (
+                  selectCard[0].getAttribute('cardvalue') ===
+                  selectCard[1].getAttribute('cardvalue')
+                ) {
+                  selectCard = [];
+                  clearCard++;
+                }
+              }
+
+              if (clearCard === (rows * cols) / 2) {
+                // 마지막 카드를 뒤집기 전에 alert이 뜨는 문제가 있어서
+                setTimeout(() => {
+                  alert('게임 클리어!');
+                  rowsInput.disabled = 'true';
+                  colsInput.disabled = 'true';
+                  button.style.display = 'block';
+                }, 500);
+              }
+            });
+          }
+          table.appendChild($tr);
+        }
+
+        gameContainer.innerHTML = '';
+        gameContainer.appendChild(table);
+      }
+    }
+
+    button.addEventListener('click', (e) => {
+      const rows = parseInt(rowsInput.value);
+      const cols = parseInt(colsInput.value);
+      console.log(rows, cols);
+
+      const puzzle = new Puzzle(rows, cols);
+      puzzle.init();
+      puzzle.start();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ㅏㅐ">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event</title>
+</head>
+
+<body>
+  <button id="btn">좌표이동 버튼</button>
+  <script>
+    const btn = document.getElementById("btn");
+
+    btn.onclick = (e) => {
+      const pointer = e;
+      console.log(pointer.x);
+      console.log(pointer.y);
+      console.log(pointer.offsetX);
+      console.log(pointer.offsetY);
+
+      const target = pointer.target;
+      console.log(target);
+      console.log(this);
+      console.log(target.offsetLeft);
+      console.log(target.offsetTop);
+
+      target.style.position = "absolute"
+      target.style.left = (target.offsetLeft + 30) + "px";
+      target.style.top = (target.offsetTop + 30) + "px";
+      target.style.width = (target.offsetWidth + 20) + "px";
+    }
+  </script>
+</body>
+
+</html>

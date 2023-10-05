@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>innerHTML</title>
+</head>
+
+<body>
+  <div id="box">
+    <h3>성별은 무엇인가요? </h3>
+    <label>남성
+      <input type="radio" name="gender" value="M" id="M" checked>
+    </label>
+    <label>여성
+      <input type="radio" name="gender" value="F" id="F">
+    </label>
+
+    <h3>결혼하셨나요? </h3>
+    <label for="Y">기혼</label>
+    <input type="radio" name="married" value="Y" id="Y" checked>
+    <label for="N">미혼</label>
+    <input type="radio" name="married" value="N" id="N">
+
+    <input type="button" value="확인">
+  </div>
+  <script>
+    const box = document.getElementById("box");
+    const inputs = document.getElementsByTagName("input");
+    const gender = document.getElementsByName("gender");
+    const married = document.getElementsByName("married")
+
+    let memo = "";
+
+    inputs[inputs.length - 1].onclick = function () {
+
+      const h1Element = document.createElement("h1");
+      let textNode = null;
+
+      if (memo == "") {
+        if (gender[0].checked) {
+          if (married[0].checked) {
+            // 기혼 남성
+            textNode = document.createTextNode("기혼 남성");
+          } else {
+            // 미혼 남성
+            textNode = document.createTextNode("미혼 남성");
+          }
+        } else {
+          if (married[0].checked) {
+            // 기혼 여성
+            textNode = document.createTextNode("기혼 여성");
+          } else {
+            // 미혼 여성
+            textNode = document.createTextNode("미혼 여성");
+          }
+
+          box.removeChild(this);
+          memo = box.innerHTML;
+          box.innerHTML = "";
+          h1Element.appendChild(textNode);
+
+          box.appendChild(h1Element);
+          box.appendChild(this);
+
+          console.log(memo);
+        }
+      } else {
+        console.log("여기")
+        box.innerHTML = memo;
+        box.appendChild(this);
+        memo = "";
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
