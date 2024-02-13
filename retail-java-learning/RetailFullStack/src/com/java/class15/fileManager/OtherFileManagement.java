@@ -1,0 +1,149 @@
+package com.java.class15.fileManager;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.Scanner;
+
+public class OtherFileManagement {
+	public static boolean showMenu(String rootPath, String sourcePath, String extension, Scanner sc) {
+		while(true) {
+			System.out.print("어떤 작업을 수행하시겠습니까? [1] 복사 [2] 이동 [3] 삭제 [0] 파일 선택 >> ");
+
+			int select = sc.nextInt();
+			sc.nextLine();
+
+			switch(select) {
+			case 1:
+				copyFile(rootPath, sourcePath, extension, sc);
+				break;
+			case 2:
+				moveFile(rootPath, sourcePath, extension, sc);
+				break;
+			case 3:
+				removeFile(sourcePath);
+				break;
+			case 0:
+				return true;
+			default:
+				System.out.println("올바른 작업을 선택해주세요.");
+			}
+		}
+	}
+
+	// 복사
+	public static boolean copyFile(String rootPath, String sourcePath, String extension, Scanner sc) {
+		String targetPath = null;
+		String targetFileName = null;
+
+		/* 폴더 설정 */
+		System.out.println("현재 폴더에 복사하시겠습니까? [1] 예 [2] 아니오 >>");
+		System.out.print("입력 >> ");
+
+		int pasteThisDirectory = Integer.parseInt(sc.nextLine());
+		if (pasteThisDirectory == 1) {
+			targetPath = rootPath;
+			System.out.println("=> 절대경로 : " + targetPath);
+		} else if (pasteThisDirectory == 2) {
+			System.out.print("파일을 복사할 절대경로를 입력해주세요 >> ");
+			targetPath = sc.nextLine();
+			System.out.println("=> 절대경로 : " + targetPath);
+		} else {
+			System.out.println("잘못 입력하셨습니다.");
+			return false;
+		}
+
+		File file = new File(targetPath);
+		if (file.mkdir()) {
+			System.out.println("폴더를 새로 생성하였습니다.");
+		}
+
+		/* 파일명 입력 */
+		while (true) {
+			System.out.print("생성할 파일명을 입력해주세요 >> ");
+			targetFileName = sc.nextLine();
+			String targetExtension = targetFileName.substring(targetFileName.lastIndexOf(".") + 1);
+			if (targetExtension.equals(extension)) {
+				break;
+			} else {
+				System.out.println("해당 파일의 확장자 : " + extension + ", 입력한 파일의 확장자 : " + targetExtension);
+				System.out.println("확장자가 잘못되었습니다.");
+			}
+		}
+		System.out.println("=> 파일명 : " + targetFileName);
+
+		/* 생성부분 */
+		try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(sourcePath));
+				BufferedOutputStream bos = new BufferedOutputStream(
+						new FileOutputStream(targetPath + File.separator + targetFileName));
+
+				) {
+			System.out.println("복사를 시작합니다");
+			byte buff[] = new byte[1024];
+			while (bis.available() > 0) {
+				bis.read(buff, 0, buff.length);
+				bos.write(buff, 0, buff.length);
+				bos.flush();
+			}
+
+			System.out.println("복사를 완료했습니다.");
+			System.out.println("=> 복사 파일 경로 : " + targetPath + File.separator + targetFileName);
+		} catch (FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+
+	//  이동
+	public static boolean moveFile(String rootPath, String sourcePath, String extension, Scanner sc) {
+		String targetPath = null;
+		System.out.print("파일을 이동할 절대경로를 입력해주세요 >> ");
+		targetPath = sc.nextLine();
+		//System.out.println("=> 절대주소 : " + targetPath);
+
+		File file = new File(targetPath);
+		
+		
+		if (file.mkdir()) {
+			System.out.println("폴더를 새로 생성하였습니다.");
+		}
+
+		try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(sourcePath));
+				BufferedOutputStream bos = new BufferedOutputStream(
+						new FileOutputStream(targetPath + File.separator + new File(sourcePath).getName()));
+
+				) {
+			System.out.println("복사를 시작합니다");
+			byte buff[] = new byte[1024];
+			while (bis.available() > 0) {
+				bis.read(buff, 0, buff.length);
+				bos.write(buff, 0, buff.length);
+				bos.flush();
+			}
+
+			System.out.println("붙여넣기를 완료했습니다");
+			System.out.println("=> 파일 절대 주소 : " + targetPath + File.separator + new File(sourcePath).getName());
+		} catch (FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		removeFile(sourcePath);
+		return true;
+	}
+
+	// 삭제
+	private static void removeFile(String sourcePath) {
+		File deleteFile = new File(sourcePath);
+		deleteFile.delete();
+	}
+}
