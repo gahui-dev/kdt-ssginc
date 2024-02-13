@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul li {
+      list-style: none;
+      padding: 20px 0;
+      text-align: center;
+      font-weight: 800;
+      transition: all .3s;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    let li = list.getElementsByTagName("li");
+
+    for (let i = 0; i < li.length; i++) {
+      li[i].style.backgroundColor = randomColor();
+      let originalColor = li[i].style.backgroundColor;
+
+      li[i].addEventListener('mouseover', function () {
+        this.style.backgroundColor = 'pink';
+      });
+
+      li[i].addEventListener('mouseleave', function () {
+        this.style.backgroundColor = originalColor;
+      })
+    }
+
+    function randomColor() {
+      const rColor = Math.floor(Math.random() * 256);
+      const gColor = Math.floor(Math.random() * 256);
+      const bColor = Math.floor(Math.random() * 256);
+      return `rgb(${rColor}, ${gColor}, ${bColor})`
+    }
+
+  </script>
+</body>
+
+</html>

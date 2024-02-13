@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가상 클래스</title>
+  <style>
+    /* 대표적인 가상클래스
+:active - a, button box : click 하고 떼는 순간까지
+:visited -a box : active 이벤트 이후 시점부터
+:hover - mouse over
+:focus - button, input box : focusing 될떄
+:checked - input box : radio, checkbox
+
+자식요소에 접근하는 가상클래스
+선택자:가상 클래스
+*/
+    .box-color {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+
+    .box-color:hover {
+      background-color: blueviolet;
+    }
+
+    .btn-class:active {
+      background-color: aqua;
+    }
+
+    .box-color:active {
+      background-color: aqua;
+    }
+
+    *:checked {
+      /*.radio-class:checked, .checkbox-class:checked*/
+      box-shadow: 0px 0px 0px 4px red;
+    }
+
+    *:disabled {
+      background-color: aqua;
+    }
+
+    a:visited {
+      display: inline-block;
+      background-color: orange;
+      color: red;
+    }
+
+    div[disabled] {
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="http://www.naver.com" target="_black">네이버 접속</a>
+  <br><br>
+  <div disabled>안녕 나는 div disabled</div>
+  <br><br>
+  <input type="text" class="text-class" placeholder="여기는 disabled 되었습니다." disabled />
+  <br><br>
+  <input type="radio" name="radio" class="radio-class" value="r1" />라디오버튼1
+  <input type="radio" name="radio" class="radio-class" value="r2" />라디오버튼2
+  <br><br>
+  <input type="checkbox" name="checkbox" class="checkbox-class" value="c1" />체크박스1
+  <input type="checkbox" name="checkbox" class="checkbox-class" value="c2" />체크박스2
+
+  <br><br>
+  <button class="btn-class">버튼</button>
+  <br>
+
+  <div class="box-color"></div>
+  <br><br><br>
+
+  <div>
+    <div class="box-color"></div>
+  </div>
+
+  <input type="text" id="input-id" class="text-class" placeholder="여기는 disabled 되었습니다." disabled />
+  <button class="btn-class" onclick="enableInput('input-id');">버튼</button>
+
+  <script>
+    function enableInput(id) {
+      console.log(document.getElementById(id));
+      const textInput = document.getElementById(id);
+      textInput.disabled = false;
+      textInput.focus();
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My 17th Page - Array Func</title>
+</head>
+
+<body>
+  <script>
+    // 0~99 random 발생
+    // 중복 x, 0~99 까지 한번만 배열에 설정
+    // 배열사이즈 100
+
+    // array 출력
+    const array = new Array();
+
+    // randomArray 생성 크기 100
+    array.makeRandomArray = function (index) {
+      function IndexOf(array, value) {
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] == value) {
+            return value;
+          }
+        }
+        return -1;
+      }
+
+      while (array.length < index) {
+        let randomNumber = Math.floor(Math.random() * index);
+        if (IndexOf(array, randomNumber) == -1) {
+          array.push(randomNumber);
+        }
+      }
+    }
+
+    // array 출력
+    array.printArray = function () {
+      for (let i = 0; i < array.length; i++) {
+        let output = array.join(", ");
+        console.log("[" + output + "]");
+      }
+    }
+
+    // reverse 구현
+    array.reverseArray = function () {
+      // from : 배열을 복사
+      let tmp = Array.from(array);
+      for (let i = 0; i < array.length; i++) {
+        array[i] = tmp[array.length - 1 - i];
+      }
+      return array;
+    }
+
+    array.sortArray = function (flag) {
+      for (let i = 0; i < this.length; i++) {
+        for (let j = i; j < this.length; j++) {
+          switch (flag) {
+
+            // 오름차순
+            case 0:
+              if (this[i] >= this[j]) {
+                let tmp = this[i];
+                this[i] = this[j];
+                this[j] = tmp;
+              }
+              break;
+
+            // 내림차순
+            case 1:
+              if (this[i] <= this[j]) {
+                let tmp = this[i];
+                this[i] = this[j];
+                this[j] = tmp;
+              }
+              break;
+          }
+        }
+      }
+    };
+
+    array.makeRandomArray(100);
+    array.printArray();
+
+    // reverse 구현
+    array.reverseArray();
+    array.printArray();
+
+    // sort 구현
+    // 내림차순, 오름차순
+    const SORT_ASCENDING = 0;
+    const SORT_DESCENDING = 1;
+    array.sortArray(SORT_DESCENDING);
+    array.printArray();
+    array.sortArray(SORT_ASCENDING);
+    array.printArray();
+  </script>
+</body>
+
+</html>

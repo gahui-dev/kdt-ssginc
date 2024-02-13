@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Func</title>
+</head>
+
+<body>
+  <script>
+    // window.onload = function () {
+    //   let gender = "";
+    //   const div_box = document.getElementById("div-box");
+    //   if (confirm("목욕탕 안내원: 성별을 말씀하세요\n ex)확인: 남성, 취소:여성 ")) {
+    //     gender = "남";
+    //   } else {
+    //     gender = "여";
+    //   }
+
+    //   div_box.textContent = `${gender}탕으로 가세요`;
+    // }
+    // 배열사이즈 100
+    // 중복 x, 0 ~ 99 까지 랜덤으로 한번만 배열에 설정
+    // (+) indexOf 사용하지 않고 만들어보기
+
+    let array = new Array();
+    array.makeRandomArray(100);
+    array.print();
+
+    array.reverseArray();
+    array.print();
+
+    const SORT_ASCENDING = 0;
+    const SORT_DESCENDING = 1;
+    arrawy.sortArray(SORT_DESCENDING);
+    array.print();
+
+    array.sortArray(SORT_ASCENDING);
+    array.print();
+
+    // array.makeRandomArray = function (count) {
+    //   while (array.length < count) {
+    //     let randomNumber = Math.floor(Math.random() * count);
+
+    //     //   if (array.indexOf(randomNumber) == -1) {
+    //     if (IndexOf(array, randomNumber) == -1) {
+    //       array.push(randomNumber);
+    //     }
+    //   }
+    //   return array;
+    // }
+
+    array.makeRandomArray = function () {
+      function IndexOf(array, value) {
+        for (let i = 0; i < array.length; i++) {
+          if (array[i] == value) {
+            return value;
+          }
+        }
+        return -1;
+      }
+      //array
+      while (array.length < 100) {
+        var randomNumber = Math.floor(Math.random() * 100);
+        if (IndexOf(array, randomNumber) == -1) {
+          array.push(randomNumber);
+        }
+      }
+    }
+
+
+
+
+    function IndexOf(array, value) {
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] == value) {
+          return value;
+        }
+      }
+      return -1;
+    }
+
+    function print() {
+      console.log("출력 구현");
+      for (let i = 0; i < array.length; i++) {
+        let output = array.join(", ");
+        console.log("[" + output + "]");
+      }
+      // return array
+    }
+
+    function reverseArray(array) {
+      console.log("reverse 구현")
+      let tmp = Array.from(array);
+      for (let i = 0; i < array.length; i++) {
+        array[i] = tmp[array.length - 1 - i];
+      }
+      console.log(array);
+      // return array;
+    }
+
+    function sortArray(array) {
+      let flag = confirm("확인: 오름차순 정렬 / 취소: 내림차순 정렬");
+
+      switch (flag) {
+        case true:
+          ascSort(array);
+          break;
+        case false:
+          descSort(array);
+          break;
+      }
+    }
+
+    function ascSort(array) {
+      console.log("sort 오름차순 구현")
+      for (let i = 0; i < 100; i++) {
+        for (let j = i; j < 100; j++) {
+          if (array[i] >= array[j]) {
+            let tmp = array[i];
+            array[i] = array[j];
+            array[j] = tmp;
+          }
+        }
+      }
+      console.log(array);
+      // return array;
+    }
+
+    function descSort(array) {
+      console.log("sort 내림차순 구현")
+      for (let i = 0; i < 100; i++) {
+        for (let j = i; j < 100; j++) {
+          if (array[i] < array[j]) {
+            let tmp = array[i];
+            array[i] = array[j];
+            array[j] = tmp;
+          }
+        }
+      }
+      console.log(array);
+      // return array;
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숫자 맞추기 게임</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .title h1 {
+      font-size: 1.2rem;
+      margin-right: 20px;
+    }
+
+    .title button {
+      padding: 4px 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 900px;
+      margin: 0 auto;
+      display: none;
+    }
+
+    .container div:nth-child(1) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    #checkButton {
+      margin-left: 80px;
+    }
+
+    #buttonsContainer {
+      display: inline-block;
+    }
+
+    #buttonsContainer button {
+      width: 80px;
+      height: 30px;
+      margin: 2px 4px;
+    }
+
+    #answer {
+      background-color: #000;
+      padding: 40px 0;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="title">
+    <h1>랜덤 숫자 맞추기 게임</h1>
+    <button id="startButton">Start</button>
+  </div>
+
+  <div class="container">
+    <div>
+      <p>사용자 선택 번호 : <span id="userSelect"></span></p>
+      <!-- <button id="checkButton">선택완료</button> -->
+    </div>
+
+    <div id="buttonsContainer"></div>
+
+    <div id="answer"></div>
+
+    <textarea name="" id="memo" rows="20">
+      게임을 시작합니다.
+    </textarea>
+  </div>
+
+
+  <script>
+    const $h1 = document.querySelector("h1");
+
+    const startButton = document.querySelector("#startButton");
+    const checkButton = document.querySelector("#checkButton");
+
+    const container = document.querySelector(".container");
+    const buttonsContainer = document.querySelector("#buttonsContainer");
+    const memo = document.querySelector("#memo");
+
+    let minNumber = 0;
+    let maxNumber = 0;
+    let answerNumber = 0;
+    let targetButton;
+
+    const answer = document.querySelector("#answer");
+    let userSelect = document.querySelector("#userSelect");
+
+    // 게임 시작하기
+    startButton.addEventListener("click", () => {
+      const inputNumber = parseInt(prompt("숫자를 입력해주세요"));
+
+      if (inputNumber < 1 || isNaN(inputNumber)) {
+        alert("0 이상의 숫자를 입력해주세요");
+        return;
+      }
+      container.style.display = "flex";
+      minNumber = inputNumber;
+      maxNumber = minNumber + 100;
+      answerNumber = getAnswerNumber(minNumber, maxNumber);
+
+      console.log(minNumber, maxNumber, answerNumber);
+
+      $h1.textContent = "시스템이 숫자를 선택하였습니다.";
+      startButton.textContent = "다시하기";
+      startButton.disabled = true;
+
+      answer.textContent = answerNumber;
+
+      // 버튼 그리기
+      for (let row = 0; row < 10; row++) {
+        for (let col = minNumber; col < minNumber + 10; col++) {
+          let button = document.createElement("button");
+
+          button.textContent = (row * 10 + col) + "";
+          button.id = (row * 10 + col);
+
+          buttonsContainer.appendChild(button);
+
+          button.addEventListener("click", () => {
+            userSelect.textContent = button.id;
+            targetButton = button;
+
+            checkButton.onclick = checkResult(targetButton);
+          })
+        }
+        buttonsContainer.appendChild(document.createElement("br"));
+      }
+
+    })
+
+
+    const checkResult = (button) => {
+      const target = parseInt(button.id)
+      console.log(button.id);
+
+      // 정답 < 사용자 입력
+      // 정답 > 사용자 입력 
+      // 정답 == 사용자 입력
+      if (target > answerNumber) {
+        memo.append(`정답 숫자는 ${target}보다 작은 숫자입니다. ` + "\n");
+      } else if (target < answerNumber) {
+        memo.append(`정답 숫자는 ${target}보다 큰 숫자입니다. ` + "\n");
+      } else if (target === answerNumber) {
+        memo.append("정답입니다. \n")
+      }
+    }
+
+    const getRandomNumber = (num) => {
+      return Math.floor(Math.random() * num);
+    }
+
+    const getAnswerNumber = (min, max) => {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+  </script>
+</body>
+
+</html>

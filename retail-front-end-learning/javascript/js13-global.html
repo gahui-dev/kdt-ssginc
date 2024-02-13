@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전역, 지역 변수</title>
+</head>
+
+<body>
+  <script>
+    var name = "동혁";
+    let scholl = "신세계";
+    const SCHOOL = "신세계리테일"
+    grade = "A+";
+    console.log(name);
+    console.log(grade);
+    console.log(this);
+    console.log(window);
+    window.onload = function () {
+      testFn();
+    }
+    function testFn() {
+      console.log("----------------");
+      console.log(this);
+      console.log(this.name);
+      console.log(this.grade);
+      console.log(this.scholl);
+      console.log(this.SCHOOL);
+      console.log("----------------");
+      console.log(name);
+      console.log(grade);
+      console.log(scholl);
+      console.log(SCHOOL);
+    }
+
+    console.log("----------------");
+
+
+  </script>
+</body>
+
+</html>

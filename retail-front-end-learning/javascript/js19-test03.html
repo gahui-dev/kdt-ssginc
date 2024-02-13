@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    #wrap1,
+    #wrap2 {
+      width: 100%;
+      height: 200px;
+      background-color: #f2f3f5;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    #wrap1>div,
+    #wrap2>div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap1"></div>
+  <hr>
+  <div id="wrap2"></div>
+
+  <script>
+    class DiyDiv {
+      parentElementId;
+
+      constructor(parentElementId) {
+        this.parentElementId = parentElementId;
+      }
+
+      getElement(elementId) {
+        return document.getElementById(elementId);
+      }
+
+      make(id, width, height, color) {
+
+        const newDiv = document.createElement('div');
+
+        newDiv.setAttribute('id', id);
+        newDiv.style.width = width + 'px';
+        newDiv.style.height = height + 'px';
+        newDiv.style.backgroundColor = color;
+
+        newDiv.innerHTML = `새로운 div <br />  아이디 : ${id} <br /> 컬러 : ${color} `;
+
+        this.getElement(this.parentElementId).appendChild(newDiv);
+      }
+    }
+
+    function randomColor() {
+      const rColor = Math.floor(Math.random() * 256);
+      const gColor = Math.floor(Math.random() * 256);
+      const bColor = Math.floor(Math.random() * 256);
+      return `rgb(${rColor}, ${gColor}, ${bColor})`;
+    }
+
+    let diyDiv;
+
+    for (let i = 0; i < 6; i++) {
+      diyDiv = new DiyDiv('wrap1');
+      diyDiv.make('id0' + i, 200, 200, randomColor());
+    }
+
+    for (let i = 0; i < 10; i++) {
+      diyDiv = new DiyDiv('wrap2');
+      diyDiv.make('id0' + i, 300, 100, randomColor());
+    }
+  </script>
+</body>
+
+</html>

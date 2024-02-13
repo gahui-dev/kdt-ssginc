@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table tr td {
+      border: 1px solid #000;
+    }
+    /* div {
+      
+      background-color: red;
+    } */
+
+    #child {
+      width: 40px;
+      height: 40px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td>
+        <div id="1" style="background-color: white;" onclick="cardClick(1)">
+          <span>10</span>
+        </div>
+      </td>
+      <td>
+        <div id="2" onclick="cardClick(2)">
+          <span style="position: relative; ">15</span>
+          <div id="child2" class="child" style="position:relative; top: -20px;"></div>
+        </div>
+      </td>
+      <td>
+        <div id="3" style="background-color: white;" onclick="cardClick(3)">
+          <span>10</span>
+        </div>
+      </td>
+      <td>
+        <div id="4" onclick="cardClick(4)">
+          <span>15</span>
+        </div>
+      </td>
+      <!-- <td><div><span>2</span></div></td> -->
+      <!-- <td><div><span>3</span></div></td> -->
+    </tr>
+  </table>
+
+  <script>
+    function cardClick(id) {
+      document.getElementById(id).style.backgroundColor = "transparent";
+    }
+
+    // const div = document.querySelector("div");
+    // div.addEventListener('click', () => {
+    //   div.style.backgroundColor = "transparent";
+    // })
+  </script>
+</body>
+</html>

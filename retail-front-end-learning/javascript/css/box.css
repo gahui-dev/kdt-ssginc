@@ -1,0 +1,28 @@
+#box-div {
+  width: 100px;
+  height: 100px;
+  transition: all 0.2s;
+  font-size: 50px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  line-height: 85px;
+}
+
+.on-box {
+  background-color: rgb(154, 79, 246);
+  font-size: 50px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  line-height: 85px;
+}
+
+.off-box {
+  background-color: rgb(233, 198, 42);
+  font-size: 50px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  line-height: 85px;
+}

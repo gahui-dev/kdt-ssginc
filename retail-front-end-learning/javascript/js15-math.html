@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math NaN</title>
+</head>
+
+<body>
+  <p id="result"></p>
+  <script>
+    console.log("st");
+    console.log(this.window.Math.PI);
+    console.log(window.Math.PI);
+    console.log(Math.abs(-100));
+    var number = 1.4;
+
+    console.log(Math.ceil(number));
+    console.log(Math.floor(number));
+    console.log(Math.round(number));
+    console.log(Math.random() * 10);
+
+    console.log(NaN);
+    console.log(isNaN(1111));
+    console.log(isNaN("sdfasd"));
+    console.log(isNaN(true));
+
+    // var people = ["권동혁"
+    //   , "김정림"
+    //   , "김정윤"
+    //   , "김효범"
+    //   , "양명진"
+    //   , "오승원"
+    //   , "이가희"
+    //   , "이선교"
+    //   , "전지영"
+    //   , "김은영"
+    //   , "박찬웅"
+    //   , "김건우"
+    //   , "문지웅"
+    //   , "임성균"];
+
+    // window.onload = () => {
+    //   while (true) {
+    //     var quit = prompt("계속진행하시겠습니까? 네:enter, 아니오:-1");
+    //     if (quit == -1) {
+    //       console.log("프로그램을 종료합니다.");
+    //       return;
+    //     }
+    //     drawLots();
+    //   }
+    // }
+    // function drawLots() {
+    //   var person = people[Math.floor(Math.random() * people.length)];
+    //   console.log(person);
+    //   document.getElementById("display").innerHTML += `<div style=''>${person}</div>`;
+    // }
+
+
+    // 제비뽑기
+
+    const result = document.getElementById("result");
+    const span = document.createElement("span");
+    const array = ["가희", "찬웅", "명진", "효범", "선교", "승원", "정림", "은영", "지웅", "성균"];
+    let isChecked = true;
+
+    while (isChecked) {
+      randomNumber = array[Math.floor(Math.random() * array.length)];
+      console.log(randomNumber);
+      result.append(randomNumber, span);
+
+      isChecked = confirm("제비뽑기를 계속 진행하시겠습니까? (예: 확인 / 아니요:취소)")
+    }
+
+  </script>
+</body>
+
+</html>

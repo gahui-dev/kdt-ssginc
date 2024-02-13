@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>for, button</title>
+</head>
+
+<body>
+  <script>
+    for (let row = 0; row < 5; row++) {
+      for (let col = 0; col < 5; col++) {
+        const button = document.createElement("button");
+        
+        button.style.width = "50px";
+        button.style.margin = "2px";
+        button.textContent = (row * 5 + col) + "";
+        button.number = (row * 5 + col);
+      
+        document.body.appendChild(button);
+
+        button.onclick = () => {
+          alert(button.number);
+        }
+      }
+
+      document.body.appendChild(document.createElement("br"));
+    }
+  </script>
+</body>
+
+</html>

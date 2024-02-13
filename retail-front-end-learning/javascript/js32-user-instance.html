@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My 31th Page Copy- setInterval setTimeout - blink</title>
+  <script>
+    window.onload = () => {
+      var obj2 = new Obj2("건우");
+      var obj3 = new Obj3("건우");
+      console.log(obj2.getName());
+      console.log(obj3.getName());
+      console.log(obj1.getName());
+
+      obj2.setName("민");
+      console.log(obj2.getName());
+
+      var obj4 = new Object();
+      console.log(obj4);
+      obj4.name = "자바";
+      obj4.getName = function () {
+        return this.name;
+      }
+      console.log(obj4.getName());
+
+
+
+    }
+
+    let obj1 = {
+      name: "건우",
+      lastName: "김",
+      getName: function () {
+        return this.name;
+      }
+    };
+
+    class Obj2 {
+      name;
+
+      constructor(name) {
+        this.name = name;
+      }
+
+      getName() {
+        return this.name;
+      }
+    }
+    Obj2.prototype.setName = function (name) {
+      this.name = name;
+    }
+
+    Obj3 = function (name) {
+      this.name = name;
+
+      this.getName = function () {
+        return this.name;
+      }
+    }
+
+
+  </script>
+</head>
+
+<body>
+  <div id="box-div"></div>
+</body>
+
+</html>

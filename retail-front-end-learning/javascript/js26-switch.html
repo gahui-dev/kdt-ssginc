@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch</title>
+</head>
+
+<body>
+  <script>
+    const func01 = () => {
+      func01.num = 100;
+      console.log(this);
+      console.log(func01);
+      console.log(func01.num);
+     }
+    const func02 = () => { 
+      func02.name = "javascript";
+      console.log(func02);
+      console.log(func02.name);
+    }
+    class Class03 {
+      name;
+      constructor(name) {
+        this.name = name;
+      }
+      getName() {
+        return this.name;
+      }
+    }
+
+    const a = new func01();
+    const b = new func02();
+    const c = new Class03("클래스03");
+
+    switch(c) {
+      case a : alert(a.num); break;
+      case b : alert(b.name); break;
+      case c : alert(c.getName()); break;
+    }
+
+    func01();
+    func02();
+  </script>
+</body>
+
+</html>

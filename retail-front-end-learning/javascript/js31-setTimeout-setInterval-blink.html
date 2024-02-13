@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>blink</title>
+  <script src="./js/class-sysout.js"></script>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #5D12D2;
+      color: #fff;
+      font-size: 50px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 200px;
+      transition: all .3s;
+    }
+
+    .box.on {
+      background-color: #E9B824;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box on">60</div>
+  <script>
+    let myIntervalId;
+    let box;
+    let disCount = 60;
+    let intervalId;
+
+    const countDown = () => {
+      box.classList.toggle("on")
+      box.textContent = disCount;
+
+      disCount--;
+      if (disCount == 0) {
+        clearInterval(intervalId);
+      }
+    }
+
+    const blinkOn = () => {
+      box.classList.add("on");
+    }
+
+    init();
+    box = document.querySelector(".box");
+    box.open = true;
+
+    blinkOn();
+    intervalId = setInterval(countDown, 1000);
+  </script>
+</body>
+
+</html>

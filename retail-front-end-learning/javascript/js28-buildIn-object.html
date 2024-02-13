@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내장객체</title>
+</head>
+<body>
+  <button onclick="history.back()">Go Back</button>
+  <button onclick="history.forward()">Go Forward</button>
+  <button onclick="history.go(2)">Go Forward + 2</button>
+  <button onclick="history.go(-2)">Go Back + 2</button>
+
+  <script>
+    console.log(this)
+    console.log(this.screen)
+    console.log(this.location)
+    console.log(this.navigator)
+    const navi = window.navigator;
+    console.log(navi.userAgentData.brands);
+
+    const browser = navi.userAgentData.brands[0];
+
+    if(browser.brand == "Google Chrome") {
+      console.log("크롬 브라우저로 접속하셨습니다.")
+    } else if(browser.brand == "Microsoft Edge") {
+      console.log("엣지 브라우저로 접속하셨습니다.")
+    }
+
+    const isMobile = navi.userAgentData.mobile;
+    if(isMobile) {
+      console.log("모바일로 접속하셨습니다.");
+    } else {
+      console.log("PC로 접속하셨습니다.");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <select name="nation" id="nation">
+    <option value="">번호를 입력하세요</option>
+    <option value="0">No. 0</option>
+    <option value="1">No. 1</option>
+    <option value="2">No. 2</option>
+    <option value="3">No. 3</option>
+  </select>
+
+  <ul>
+    <li>Korea</li>
+    <li>Japan</li>
+    <li>China</li>
+    <li>Betnam</li>
+  </ul>
+
+  <script>
+
+    function start() {
+      const nation = document.getElementById("nation");
+      const li = document.getElementsByTagName("li");
+
+      nation.onchange = function () {
+
+        // background - reset
+        for (let i = 0; i < li.length; i++) {
+          li[i].style.backgroundColor = "";
+        }
+
+        // select - background => yellow
+        console.log(li[this.value])
+        li[this.value].style.backgroundColor = "pink";
+      }
+    }
+
+    start();
+  </script>
+</body>
+
+</html>

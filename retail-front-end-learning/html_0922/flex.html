@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex 플렉스 박스</title>
+  <style>
+    .flex {
+      display: flex;
+      border: 1px solid black;
+      background-color: aquamarine;
+      padding: 15px;
+    }
+
+    .flex>div {
+      color: white;
+      border: 1px solid black;
+      background-color: burlywood;
+    }
+
+    .flex-space-between {
+      /*최대한 멀리 떨어지게*/
+      justify-content: space-between;
+    }
+
+    .flex-space-around {
+      /*1/2로 양옆을 나누기*/
+      justify-content: space-around;
+    }
+
+    .flex-space-evenly {
+      /*1:1로 나누기*/
+      justify-content: space-evenly;
+    }
+
+    /*
+* {
+font-size: 0;
+}*/
+  </style>
+</head>
+
+<body>
+  <div class="flex flex-space-between">
+    <div>플렉스</div>
+    <div>스페이스</div>
+    <div>between</div>
+  </div>
+  <div class="flex flex-space-around">
+    <div>플렉스</div>
+    <div>스페이스</div>
+    <div>around</div>
+  </div>
+  <div class="flex flex-space-evenly">
+    <div>플렉스</div>
+    <div>스페이스</div>
+    <div>evenly</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>랜덤 배열 만들기</title>
+  <style>
+    #input {
+      width: 300px;
+      height: 20px;
+    }
+
+    #result {
+      border: 2px solid #000;
+      margin-top: 20px;
+      padding: 20px;
+      word-break: break-word;
+      line-height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="number" id="count" placeholder="생성할 배열 크기를 입력해주세요">
+  <button onclick="array.makeRandomArray()">만들기</button>
+
+  <div id="result"></div>
+
+
+  <script>
+
+    let array = new Array();;
+
+    const test = {
+      makeRandomArray: function () {
+        while (array.length < 100) {
+          let randomNumber = Math.floor(Math.random() * 100);
+          if (array.indexOf(randomNumber) == -1) {
+            array.push(randomNumber);
+          }
+        }
+      },
+      printArray: function () {
+        for (let i = 0; i < array.length; i++) {
+          let output = array.join(", ");
+          console.log("[" + output + "]");
+        }
+      },
+      reverseArray: function () { },
+      sortArray: function () { },
+    }
+
+    console.println = function (data) {
+      console.log(data)
+    }
+
+    // let array = new Array();
+    // const SORT_ASCENDING = 0;
+    // const SORT_DESCENDING = 1;
+
+    const $count = document.getElementById("count");
+    const $button = document.querySelector("button");
+    const $result = document.getElementById("result");
+
+    array.makeRandomArray();
+
+    console.log(array)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var value1 = "값은?";
+    value2 = 200;
+    value3 = 0.5;
+    value4 = true;
+
+    // 값은?200.5true
+    var result = value1 + (value2 + value3) + value4;
+    console.log(result);
+
+    // 값은?2000.5true
+    // result = value1 + value2 + "" + value3 + "" + value4;
+    // result = value1 + String(value2) + String(value3) + value4;
+    // result = value1 + value2.toString() + value3.toString() + value4;
+    result = value1.concat(value2, value3, value4);
+    console.log(result);
+
+    // 값은?2000.5false
+    result = value1.concat(value2, value3, !value4);
+    console.log(result);
+  </script>
+</body>
+
+</html>

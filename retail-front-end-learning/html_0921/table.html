@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>학생성적관리 시스템</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        border: 2px solid #000;
+      }
+      table thead {
+        background-color: #f3d31e;
+      }
+      table thead tr th {
+        padding: 0 20px;
+        border: 1px solid #000;
+        text-align: left;
+      }
+      table tbody tr td {
+        border: 1px solid #000;
+      }
+      table tbody tr:last-of-type {
+        border-top: 3px double #000;
+      }
+      table tr:nth-child(1) td:first-child,
+      table tr:nth-child(5) td:first-child,
+      table tr:nth-child(8) td:first-child,
+      table tr:nth-child(12) td:first-child {
+        text-align: center;
+      }
+
+      p span {
+        color: red;
+      }
+      h1 {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p><span>안녕</span>하세요</p>
+
+    <table style="border-collapse: collapse">
+      <thead>
+        <tr>
+          <th>팀</th>
+          <th>학생명</th>
+          <th>점수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="4">1</td>
+          <td>이선교</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>오승원</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>김건우</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>전지영</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td rowspan="3">2</td>
+          <td>이가희</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>양명진</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>박찬웅</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td rowspan="4">3</td>
+          <td>김정림</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>임성균</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>김효범</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>김은영</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td rowspan="3">4</td>
+          <td>문지웅</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>김정윤</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>권동혁</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>총점</td>
+          <td colspan="2"></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

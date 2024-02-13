@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Func</title>
+</head>
+
+<body>
+  <script>
+    console.log("test")
+    const array = new Array(5);
+    for (let i in array) {
+      console.log(i);
+      console.log(array[i]);
+    }
+    console.log("---------------");
+
+    for (let i = 0; i < array.length; i++) {
+      console.log(array[i]);
+      array[i] = i;
+    }
+    console.log(array);
+    array.reverse();
+    console.log(array);
+    array.reverse();
+    console.log(array);
+    array.push(3.5);
+    console.log(array);
+    array.sort();
+    console.log(array);
+
+    // 2 ~ 3.5 까지 찾아서 자르기
+    console.log(array.slice(array.indexOf(2), array.indexOf(3.5) + 1));
+
+    // 0~ 99까지 랜덤발생
+    // 중복 x, 0 ~ 99 까지 한번만 배열에 설정
+    // 배열사이즈 100
+
+    // const array = new Array(100);
+
+    // Math.floor(Math.random() * 99)
+
+    // array
+    parintArray(array)
+
+    // array 출력
+
+    // reverse 구현
+
+    // sort 구현
+    // 내림차순, 오름차순
+
+  </script>
+</body>
+
+</html>
