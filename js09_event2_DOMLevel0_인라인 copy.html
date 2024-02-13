@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      JS 이벤트 처리 (DOM Level1 없어짐)
+      1) DOM Level 0
+         - 인라인 방식
+            예) html 태그에 직접 이벤트 추가해서 처리
+               <button onclick="함수()">ok</button>
+
+         - 고전 방식
+            예) html 태그를 javascrip로 접근해서 이벤트 처리 (콜백 -> 함수명만)
+               document.querySelector("button").onclick = 함수명;
+               <button>ok</button>
+
+      2) DOM Level 2
+         - document.addEventListener("click", 함수);
+    */
+  </script>
+
+  <button onclick="ok_click()">OK</button> <br />
+
+  <select onchange="ok_click()">
+    <option>A1</option>
+    <option>A2</option>
+    <option>A3</option>
+  </select> <br />
+
+  아이디 : <input type="text" onkeyup="ok_click()" /> <br />
+
+  <form action="target.html" onsubmit="form_check()">
+    아이디 : <input type="text" onkeyup="ok_click()" name="userid" /> <br />
+    패스워드 : <input type="password" name="passwd" /> <br />
+    <input type="submit" value="로그인" /> <br />
+  </form>
+
+  <div style="background-color: pink" onclick="a()">A
+    <div style="background-color: skyblue" onclick="b()">B</div>
+  </div>
+
+  <script>
+    function ok_click() {
+      console.log("OK");
+    }
+
+    function form_check() {
+      // submit 방지
+      event.preventDefault();
+    }
+
+    function a() {
+      console.log("a");
+    }
+    function b() {
+      console.log("b");
+      // 이벤트 전파 방지
+      event.stopPropagation();
+    }
+
+  </script>
+</body>
+
+</html>

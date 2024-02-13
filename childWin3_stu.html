@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+
+</head>
+
+<body>
+  <table border="1">
+    <tr>
+      <th>우편번호</th>
+      <th>주소</th>
+    </tr>
+    <tr>
+      <td><a href="" onclick="aClick(this)">12345</a></td>
+      <td>서울시 강남구 XXX 아파트</td>
+    </tr>
+    <tr>
+      <td><a href="" onclick="aClick(this)">99999</a></td>
+      <td>경기도 고양시 ZZZ 아파트</td>
+    </tr>
+  </table>
+  <script>
+    function aClick(a) {
+      event.preventDefault();
+
+      let trEL = a.parentNode.parentNode;
+      let address1 = trEL.children[0].textContent;
+      let address2 = trEL.children[1].textContent;
+
+      console.log(address1, address2);
+
+      opener.document.querySelector("#post").value = address1;
+      opener.document.querySelector("#address").value = address2;
+
+      window.close();
+    }
+  </script>
+</body>
+
+</html>

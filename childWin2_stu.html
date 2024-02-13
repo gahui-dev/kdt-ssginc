@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+
+  function a() {
+    opener.document.querySelector("#userid").value = document.querySelector("#userid").value;
+    window.close();
+  }
+
+</script>
+</head>
+<body>
+ 아이디:<input type="text" name="userid" id="userid">
+ <button onClick="a()">아이디 사용 가능</button>
+</body>
+</html>

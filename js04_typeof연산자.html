@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    var n = 10;
+    console.log(n, typeof n);   // number
+    var n2 = 3.14;
+    console.log(n2, typeof n2);   // number
+    var n3 = "홍길동";
+    console.log(n3, typeof n3);   // string
+    var n4 = '남';
+    console.log(n4, typeof n4);   // string
+    var n5 = false;
+    console.log(n5, typeof n5);   // boolean
+    var n6;
+    console.log(n6, typeof n6);   // undefined
+    var n7 = null;
+    console.log(n7, typeof n7);   // object
+    var n8 = NaN; // Not a Number
+    console.log(n8, typeof n8);   // number
+    var n9 = [1,2,3];
+    console.log(n9, typeof n9);   // object
+    var n10 = {"age" : 10};
+    console.log(n10, typeof n10);   // object
+    var n11 = function(){};
+    console.log(n11, typeof n11);   // function
+  
+    
+    // NaN
+    // 문자열을 Int 형으로 바꾸기
+    // "10" -> 10
+    var m = Number.parseInt("10");
+    console.log(m + 10);
+
+    var m2 = parseInt("10");
+    console.log(m2);
+
+    var x = Number.parseInt("hello");
+    console.log(x);   // 이 때, NaN이 발생
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

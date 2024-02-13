@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+
+</head>
+
+<body>
+  이미지 변경하기<br>
+  <img src="a.jpg" width="100" height="100" id="my">
+  <button onclick="prev()">이전</button>
+  <button onclick="next()">다음</button><br>
+  이미지 파일명:<span id="result">a.jpg</span>
+  <script type="text/javascript">
+
+    //이미지 정보를 배열에 저장하여 관리
+    var arr = ["a.jpg", "b.jpg", "c.jpg"];
+
+    var imgEl = document.querySelector("#my");
+    var resultEl = document.querySelector("#result");
+
+    function prev() {
+      for(var el in arr) {
+        if(imgEl.getAttribute("src") == arr[el]) {
+          el--;
+
+          if(el < 0) {
+            el = 2;
+          }
+          imgEl.src = arr[el];
+          resultEl.innerHTML = arr[el];
+        }
+      }
+
+      // arr.forEach((el) => {
+      //   if(imgEl.getAttribute("src") == el) {
+
+      //   }
+      // })
+    }
+
+    function next() {
+
+    }
+
+  </script>
+</body>
+
+</html>

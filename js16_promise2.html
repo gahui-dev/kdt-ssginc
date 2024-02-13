@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // Promise 객체 만들기
+    
+    // 비동기 처리 함수
+    function xxx(n) {
+      return new Promise(function(resolve, reject) {
+        console.log("1");
+        // 성공했을 때 => resolve
+        // 실패했을 때 => reject
+
+        if(n == "ok") {
+          resolve();
+          console.log("성공");
+          // [[Prototype]]: Promise
+          // [[PromiseState]]: "fulfilled"
+          // [[PromiseResult]]: undefined
+        } else {
+          reject();
+          console.log("실패");
+          // [[Prototype]]: Promise
+          // [[PromiseState]]: "rejected"
+          // [[PromiseResult]]: undefined
+        }
+        
+        console.log("2");
+      });
+    }
+
+    var result = xxx("ok"); // result 값이 Promise 객체
+    console.log("result: " , result);
+
+    /*
+      비동기 처리를 하기 위한 준비 단계
+      [[Prototype]]: Promise
+      [[PromiseState]]: "fulfilled"
+      [[PromiseResult]]: pending
+    */
+    console.log("end");
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    var n = [10, 20, 30];
+
+    // 1. 일반 for 문
+    for(var i = 0; i < n.length; i++) {
+      console.log(n[i]);
+    }
+
+    // 2. for-of 문: 배열의 요소 반환
+    /*
+      for(변수선언 of 배열명) {}
+    */
+    for(var x of n) {
+      console.log(x);
+    }
+
+    // 3. for-in 문: 배열의 요소 인덱스 반환
+    for(var x in n) {
+      console.log(x);
+      console.log(n[x]);
+    }
+
+    
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      객체분해할당(ES6)
+      1. 배열
+
+      2. JSON 객체
+    */
+
+    // 이전 문법
+    var x = [1, 2, 3];
+    var a = x[0];
+    var b = x[1];
+    var c = x[2];
+
+    console.log(a, b, c);
+
+    // 객체분해할당
+    var [a, b, c] = [10, 20, 30];
+    console.log(a, b, c);
+
+    var [a, b] = [10, 20, 30];
+    console.log(a, b);
+
+    var [a, b, c] = [10, 20];
+    console.log(a, b, c);
+
+    var [a, b, c = 200] = [10, 20];
+    console.log(a, b, c);
+
+    var [a, b, ...c] = [10, 20, 30, 40, 50];
+    console.log(a, b, c);
+
+    var [, , c] = [10, 20, 30];
+    console.log(c);
+
+    // 두 개의 변수값 교환
+    var x = 10;
+    var y = 20;
+    console.log(`x > ${x} y > ${y}`)
+    var [y, x] = [x, y];
+    console.log(`x > ${x} y > ${y}`)
+  </script>
+</body>
+</html>

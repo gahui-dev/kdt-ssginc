@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <script type="text/javascript">
+    function show() {
+      var inputList = document.querySelectorAll("input");
+      var result = [];
+
+      inputList.forEach((el) => {
+        if (el.checked) {
+          result.push(el);
+        }
+      })
+
+      result.forEach((el) => {
+        document.querySelector("#result").innerText += el.value + "<br>";
+      })
+    }
+
+  </script>
+</head>
+
+<body>
+  취미<br>
+  <ul>
+    <li>야구<input type="checkbox" name="hobby" value="야구"></li>
+    <li>농구<input type="checkbox" name="hobby" value="농구"></li>
+    <li>게임<input type="checkbox" name="hobby" value="게임"></li>
+  </ul>
+  <button onclick="show()">결과보기</button><br>
+  결과값:<div id="result"></div>
+</body>
+
+</html>

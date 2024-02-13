@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 2. BOM 객체(Browser Object Model)
+    /*
+      1) 개요
+        - 웹 브라우저와 관련된 객체
+        - 웹 브라우저를 실행하면 자동으로 5개의 BOM 객체가 생성된다
+
+      2) 종류
+        - Window, Screen, Navigator, Location, History 객체
+        1) Window 객체 => var window = new Window();
+            - 전역객체(최상위 객체), Window 변수 생략해서 주로 사용
+
+        2) Screen 객체 => var screen = new Screen();
+            - 웹 브라우저 화면(너비, 높이) 정보
+            - https://www.w3schools.com/jsref/obj_screen.asp
+
+        3) Navigator 객체 => var navigator = new Navigator();
+            - 웹 브라우저 정보(종류, 버전 등)
+            - https://www.w3schools.com/jsref/obj_navigator.asp
+
+        4) Location 객체 => var location = new Location();
+            - 웹 브라우저 URL 정보(링크타겟)
+            - https://www.w3schools.com/jsref/obj_location.asp
+             
+        5) History 객체 => var history = new History();
+            - 웹 브라우저 back, forward 정보
+            - https://www.w3schools.com/jsref/obj_history.asp
+    */
+    console.log("window 객체 참조", window);
+    console.log("screen 객체 참조", screen);
+    console.log("navigator 객체 참조", navigator);
+    console.log("location 객체 참조", location);
+    console.log("history 객체 참조", history);
+  </script>
+</body>
+</html>

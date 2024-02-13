@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+갯수<input type="text" name="quantity"  id="quantity" value="1">
+<button id="up" onclick="increase()">+</button>
+<button id="down" onclick="decrease()">-</button>
+
+<script type="text/javascript">
+    var quantity = document.querySelector("#quantity");
+
+    function increase() {
+        quantity.value++;
+    }
+
+    function decrease() {
+        quantity.value--;
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var xxx = "name";
+
+    const person = {
+      // 속성 (property)
+      [xxx]: "이가희", 
+      age: 20,
+      // 동작 (method),
+      getAge: function() {
+        return this.age;
+      },
+      getName: function() {
+        return this.name;
+      }
+    };
+
+    console.log(person);
+    console.log(person.name, person["name"], person.getName())
+    console.log(person.age, person["age"], person.getAge())
+    
+
+  </script>
+</body>
+
+</html>

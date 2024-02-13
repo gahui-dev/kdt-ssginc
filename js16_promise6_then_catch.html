@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // Promise 객체 만들기
+
+    // 비동기 처리 함수
+    function xxx(n) {
+      return new Promise(function (resolve, reject) {
+        console.log("1");
+
+        if (n == "ok") {
+          resolve();
+        } else {
+          reject();
+        }
+
+        console.log("2");
+      });
+    }
+
+    // var result = xxx("ok2"); 
+    var result = xxx("ok");
+
+    // ⭐️ result.then("resolve() 함수 호출 시 수행되는 함수", "reject() 함수 호출 시 수행되는 함수");
+    /*
+      result
+        .then("resolve() 함수 호출 시 수행되는 함수")
+        .catch("reject() 함수 호출 시 수행되는 함수")
+    */
+
+    // result.then(function () { console.log("success") }, function () { console.log("fail") })
+    result
+      .then(function () {
+        console.log("success");
+      })
+      .catch(function () {
+        console.log("fail");
+      })
+
+    // 성공 또는 실패인 경우에 실제 처리 작업
+    console.log("result: ", result);
+    console.log("end");
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

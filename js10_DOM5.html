@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label>
+    회원주소
+    <input type="text" name="address1" value="부산"/>
+  </label>
+
+  <label>
+    배송지와 동일하면 체크하시오
+    <input type="checkbox" id="checkBox" onClick="check()"/>
+  </label>
+
+  <input type="text" name="address2" />
+  <!-- <button onclick="p_edit()">수정</button> -->
+
+  <script>
+    function check() {
+      var chk = checkBox.checked;
+
+      let address1 = document.getElementsByName("address1")[0];
+      let address2 = document.getElementsByName("address2")[0];
+
+      if(chk) {
+        address2.value = address1.value
+      } else {
+        address2.value = "";
+      }
+    }
+    
+  </script>
+</body>
+</html>

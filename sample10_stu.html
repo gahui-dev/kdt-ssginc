@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+
+</head>
+
+<body>
+  회원정보<br>
+  주소<input type="text" name="address1" id="address1" value="서울시 강남구"><br>
+  전화번호<input type="text" name="phone1" id="phone1" value="010-1234-1234"><br>
+  <hr>
+  동일<input type="checkbox" name="chk" onclick="checkFun()">
+  <hr>
+  배송지 정보<br>
+  주소<input type="text" name="address2" id="address2" value=""><br>
+  전화번호<input type="text" name="phone2" id="phone2" value=""><br>
+  <ul>
+  </ul>
+  <script type="text/javascript">
+    function checkFun() {
+
+      let checked = document.getElementsByName("chk")[0].checked;
+
+      if(checked) {
+        document.querySelector("#address2").value = document.querySelector("#address1").value;
+        document.querySelector("#phone2").value = document.querySelector("#phone1").value;
+      } else {
+        document.querySelector("#address2").value = "";
+        document.querySelector("#phone2").value = "";
+
+      }
+    }
+
+
+
+  </script>
+</body>
+
+</html>

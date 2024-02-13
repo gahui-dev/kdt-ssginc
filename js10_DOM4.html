@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="x">Hello</p>
+  <button onclick="p_edit()">수정</button>
+
+  <script>
+    function p_edit() {
+      var pTag = document.querySelector("#x");
+      pTag.innerText = "world";
+    }
+  </script>
+</body>
+</html>

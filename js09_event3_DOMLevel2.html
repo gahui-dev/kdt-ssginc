@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      JS 이벤트 처리 (DOM Level1 없어짐)
+      1) DOM Level 0
+         - 인라인 방식
+            예) html 태그에 직접 이벤트 추가해서 처리
+               <button onclick="함수()">ok</button>
+
+         - 고전 방식
+            예) html 태그를 javascript로 접근해서 이벤트 처리 (콜백 -> 함수명만)
+               document.querySelector("button").onclick = 함수명;
+               <button>ok</button>
+
+      2) DOM Level 2
+         - document.addEventListener("click", 함수);
+    */
+  </script>
+
+  <button id="btn">OK</button>
+
+  <script>
+    function ok_click() {
+      console.log("ok_click");
+    }
+
+    // DOM Level 2 방식
+    let button = document.querySelector("#btn");
+    button.addEventListener("click", ok_click, false); // 콜백으로 처리
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {border-collapse: collapse;}
+    table tr td {border: 1px solid #000; padding: 10px;}
+  </style>
+  <script>
+    // 비동기 통신
+    // 실습용 사이트 => https://reqres.in/
+    var httpRequest;
+
+    function init() {
+      // 1. XMLHttpRequest 객체 생성
+      httpRequest = new XMLHttpRequest();
+
+      // 2. 응답 콜백
+      // onreadystatechange => 통신 상태가 변화된 타이밍에 호출되는 이벤트 핸들러
+      httpRequest.onreadystatechange = ajax_response;
+
+      // 3. 요청
+      // open() => HTTP 요청 초기화
+      // 첫 번째 인자값 : GET, POST ...
+      // 두 번째 인자값 : url
+      // 세 번째 인자값 : true 비동기, false 동기
+      httpRequest.open("get", "https://reqres.in/api/users/2", true);
+
+      // send(body) => HTTP 요청을 송신(인수 body는 요청 본체)
+      // get 방식 => null
+      httpRequest.send(null);
+
+    }
+    function ajax_response() {
+      // 응답 처리
+      if(httpRequest.readyState == 4 && httpRequest.status == 200) {
+        // 응답
+        // text -> json : JSON.parse()
+        // json -> text : JSON.stringify()
+        
+        var data = httpRequest.responseText;
+        var json_data = JSON.parse(data);
+
+        console.log(json_data);
+
+        var id = json_data.data.id;
+        var email = json_data.data.email;
+        var first_name = json_data.data.first_name;
+        var last_name = json_data.data.last_name;
+        var avatar = json_data.data.avatar;
+    
+        console.log(id, email, first_name, last_name, avatar);
+        // table로 출력
+        var resultEl = document.querySelector("#result");
+        var table = `<table>
+            <tr>
+              <td>id</td>
+              <td>email</td>
+              <td>first_name</td>
+              <td>last_name</td>
+              <td>avatar</td>
+            </tr>
+            <tr>
+              <td>${id}</td>
+              <td>${email}</td>
+              <td>${first_name}</td>
+              <td>${last_name}</td>
+              <td><img src="${avatar}" /></td>
+            </tr>
+          </table>`
+          
+        resultEl.innerHTML = table
+      } 
+    }
+  </script>
+</head>
+
+<body>
+  <button id="req" onclick="init()">요청</button>
+  <div id="result"></div>
+</body>
+
+</html>
