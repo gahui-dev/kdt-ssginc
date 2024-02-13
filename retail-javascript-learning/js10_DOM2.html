@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="x">Hello</p>
+  <button onclick="p_print()">조회</button>
+
+  <script>
+    function p_print() {
+      const pTag = document.getElementById("x");
+
+      console.log(pTag);
+      console.dir(pTag);
+      console.log(pTag.innerText);
+    }
+  </script>
+</body>
+</html>

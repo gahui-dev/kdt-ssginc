@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      template 리터럴
+      1. 개요 
+         - `` (백틱) 이용
+      2. 장점
+         - 가. 문자열 중간에 변수에 삽입 가능
+         - 예) `이름${변수}입니다`
+    */
+    var name = "홍길동";
+    var result = `이름은 ${name}입니다.`;
+
+    console.log(result);
+
+    var table = "<table><tr></tr></table>";
+    console.log(table);
+
+    table = `
+      <table>
+        <tr>
+        </tr>
+      </table>
+    `;
+
+    console.log(table);
+
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      객체분해할당(ES6)
+      1. 배열
+
+      2. JSON 객체
+    */
+
+    // 이전 문법
+    var x = { k1: 100, k2: 200 };
+    var k1 = x.k1;
+    var k2 = x.k2;
+
+    var z = "k1";
+
+    var k1 = x[z]; // 연관배열
+    // var k2 = x["k2"];
+
+    console.log(k1, k2);
+
+    var { k1, k2 } = { k1: 1000, k2: 2000 };
+    console.log(k1, k2);
+
+    var { k1, k3 } = { k1: 1000, k2: 2000 };
+    console.log(k1, k3);
+
+    var { k1, k3 = 20 } = { k1: 1000, k2: 2000 };
+    console.log(k1, k3);
+
+    var k1, k2;
+    ({k1, k2} = {k1: 3000, k2: 4000});
+    console.log(k1, k2);
+
+    // 변수명 변경
+    var a, b;
+    ({k1:a, k2:b} = {k1: 5000, k2: 6000});
+    console.log(a, b);
+  </script>
+</body>
+
+</html>

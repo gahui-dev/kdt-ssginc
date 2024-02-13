@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+
+</head>
+
+<body>
+  전체선택
+  <input type="checkbox" name="all" onclick="allSelect()"><br>
+  <input type="checkbox" name="java" class="lang">java<br>
+  <input type="checkbox" name="sql" class="lang">sql<br>
+  <input type="checkbox" name="angular" class="lang">angular<br>
+  <script type="text/javascript">
+
+    function allSelect() {
+      let checkBoxList = document.querySelectorAll("input");
+      let allCheck = document.getElementsByName("all")[0].checked;
+      
+      if(allCheck) {
+        checkBoxList.forEach((el) => {
+          el.checked = true
+        })
+      } else {
+        checkBoxList.forEach((el) => {
+          el.checked = false
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>

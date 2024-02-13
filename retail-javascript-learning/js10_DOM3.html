@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="x">Hello</p>
+  <p id="x2">Hello</p>
+  <p id="x3">Hello</p>
+  <button onclick="p_print()">조회</button>
+
+  <script>
+    function p_print() {
+      const pEl = document.querySelector("#x");
+
+      console.log(pEl.innerText);
+      console.log(pEl.innerHTML);
+      console.log(pEl.textContent);
+
+      var p_list = document.querySelectorAll("p");
+      console.log(p_list); // NodeList(3) => 배열
+
+      p_list.forEach((list) => {
+        console.log(list)
+      })
+
+      for(var p of p_list) {
+        console.log(p.textContent)
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var name = "홍길동";
+
+    const person = {
+      // 속성 (property)
+      name, // name: name
+      age: 20,
+      
+      // 동작 (method)
+      // get, set 키워드를 붙일 수 있음
+      get getAge() { return this.age; },
+      get getName() { return this.name; },
+      set setAge(age) { this.age = age },
+      set setName(name) { this.name = name }
+    };
+
+    console.log(person);
+
+    person.setName = "홍길동";
+    person.setAge = 30;
+    // person.setName("홍길동"); 
+    // person.setAge(30); 
+
+    console.log(person.name, person["name"], person.getName)
+    console.log(person.age, person["age"], person.getAge)
+
+
+  </script>
+</body>
+
+</html>

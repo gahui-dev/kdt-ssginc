@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    
+</head>
+
+<body>
+    값:<input type="search" name="v1" id="v1">
+    <div id="result">
+
+    </div>
+    <script type="text/javascript">
+        let resultEl = document.querySelector("#result");
+
+        window.addEventListener("keydown", function (e) {
+            if (e.key === 'Enter') {
+                resultEl.innerHTML += document.querySelector("#v1").value + "<br />";
+                document.querySelector("#v1").value = "";
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

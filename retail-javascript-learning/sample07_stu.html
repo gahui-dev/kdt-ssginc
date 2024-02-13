@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+
+</head>
+
+<body>
+  <button onClick="amount(this)">5</button>
+  <button onClick="amount(this)">10</button>
+  <button onClick="amount(this)">15</button><br>
+  총합:<span id="result"></span>
+
+  <script type="text/javascript">
+    let resultEl = document.querySelector("#result");
+
+    function amount(value) {
+      let number = Number.parseInt(value.innerText);
+      let result = 0;
+
+      for(var i = 1; i <= number; i++) {
+        result += i;
+      }
+
+      resultEl.innerText = result;
+    }
+
+  </script>
+</body>
+
+</html>

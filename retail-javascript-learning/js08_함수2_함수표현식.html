@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* JS 함수
+    [있어도 되고 없어도 됨] 
+
+    1) 함수 선언식(이름 있는 함수)
+      function 함수명([파라미터, ..]) {
+        문장
+        [return 값]
+      }
+
+    2) 함수 표현식(익명 함수: 이름없는 함수)
+      var 변수명 = function([파라미터, ..]) {
+        문장
+        [return 값]
+      }
+    */
+
+    /* 함수 특징(4가지로 구분, 파라미터 x 리턴값 )
+      1) 반드시 호출해야 됨
+      2) 파라미터와 인자(전달값) 갯수가 달라도 됨
+      3) function fun2(n1, n2 = 100) 처럼 초기값 설정 가능 => default 파라미터
+      4) function fun2(n) 처럼 인자값을 배열로 뭉쳐서 전달 가능 => rest 파라미터
+         - 반드시 마지막 파라미터에만 사용 가능
+      5) ⭐️ 중요! 함수는 데이터 => 일급객체(first-class)라고 부름
+         - 함수를 변수에 저장 가능 
+         - 함수를 다른 함수 호출 시 인자값으로 전달 가능
+         - 함수 호출 시 리턴값으로 함수 반환 가능
+      6) 주의할 점
+         - function 함수명으로 변수명 사용 불가(에러 아님)
+    */
+
+    // 1. 함수 표현식(1) => 파라미터 x, 리턴값 x
+    var fun = function () {
+      console.log("fun");
+    }
+    fun();
+
+    // 2. 함수 표현식(2) => 파라미터 o, 리턴값 x
+    var fun2 = function (n1, n2 = 100) {
+      console.log("fun2", n1, n2);
+    };
+    fun2(10, 20);
+    fun2();
+
+    // 3. 함수 표현식(3) => 파라미터 x, 리턴값 o
+    var fun3 = function () {
+      console.log("fun3");
+      return 100;
+    }
+    var result = fun3();
+    console.log("result", result);
+
+    // 4. 함수 표현식(4) => 파라미터 o, 리턴값 o
+    var fun4 = function (n1, n2) {
+      console.log("fun4", n1, n2);
+      return n1 + n2;
+    }
+    result = fun4(100, 200);
+    console.log("result", result);
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    //1. 비교연산자
+    // equal(==) 값만 비교
+    console.log("10" == 10);    // true 반환
+
+    // identical(===) 값과 타입 비교
+    console.log("10" === 10);   // false 반환
+
+    // 주의 : undefined 비교는 반드시 === 사용한다.
+    var x;
+    console.log("equal : ", x == undefined);    // true 반환
+    console.log("identical : ", x === undefined);   // true 반환
+
+    var x2 = null;
+    console.log("equal : ", x2 == undefined);    // true 반환
+    console.log("identical : ", x2 === undefined);   // true 반환
+
+    if(undefined){
+      console.log("1")
+    }
+    if('undefined'){
+      console.log("2")
+    }
+    console.log("equal : ", undefined ==  undefined);
+    console.log("equal : ", 'undefined' == typeof undefined);
+   
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

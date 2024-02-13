@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    // spread 연산자 : 배열/객체의 요소를 분해
+    var n = [1, 2, 3];
+
+    // 1. 배열복사
+    var n2 = [...n];
+    console.log(n2);
+    console.log(n);
+
+    // 2. 배열 연결
+    var m = [1, 2, 3];
+    var m2 = [10, 20, 30];
+    var m3 = [...m, ...m2];
+    console.log(m3);
+
+    // 3. 배열에 임의의 값 추가
+    var x = [1, 2, 3];
+    // x 배열에 4, 5 추가하기
+    var x2 = [...x , 4, 5];
+    console.log(`x2 => ${x2}`);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

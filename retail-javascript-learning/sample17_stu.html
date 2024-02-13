@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+  function getAddress() {
+    myWindow = window.open("./childWin3_stu.html", "_blank", "width=400, height=400")
+  }
+</script>
+</head>
+<body>
+ 우편번호<input type="text" name="post" id="post"><br>
+ 주소:<input type="text" name="address" id="address"><br>
+ 추가주소:<input type="text" name="address1" id="address1">
+ <button onClick="getAddress()">주소</button>
+
+</body>
+</html>

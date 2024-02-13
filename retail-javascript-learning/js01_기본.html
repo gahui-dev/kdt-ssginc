@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    var btn = document.querySelector("#ok");
+    console.log(btn); // 아직은 바디에 접근 못해서 널이 뜸
+  </script>
+
+  <script src="test.js">  // hello 경고창 발생
+    
+  </script>
+</head>
+
+<body>
+  <script>
+    var btn = document.querySelector("#ok");
+    console.log(btn); // 아직도 버튼에 접근 못해서 널이 뜸
+  </script>
+
+  <button id="ok">OK</button>
+
+  <script>
+    var btn = document.querySelector("#ok");
+    console.log(btn); // 접근가능
+  </script>
+</body>
+
+</html>

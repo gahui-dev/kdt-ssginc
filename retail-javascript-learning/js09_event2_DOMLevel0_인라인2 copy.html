@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function init() {
+      // button 태그 접근
+      var btn = document.querySelector("#xxx");
+      console.log(btn);
+    }
+  </script>
+</head>
+
+<body onload="init()">
+  <script>
+    /*
+      JS 이벤트 처리 (DOM Level1 없어짐)
+      1) DOM Level 0
+         - 인라인 방식
+            예) html 태그에 직접 이벤트 추가해서 처리
+               <button onclick="함수()">ok</button>
+
+         - 고전 방식
+            예) html 태그를 javascrip로 접근해서 이벤트 처리 (콜백 -> 함수명만)
+               document.querySelector("button").onclick = 함수명;
+               <button>ok</button>
+
+      2) DOM Level 2
+         - document.addEventListener("click", 함수);
+    */
+  </script>
+
+  <button id="xxx">OK</button>
+</body>
+
+</html>

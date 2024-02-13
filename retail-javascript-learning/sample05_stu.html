@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+
+</head>
+
+<body>
+  이미지 이름 알아보기<br>
+  <img src="a.jpg" width="100" height="100">
+  <img src="b.jpg" width="100" height="100">
+  <img src="c.jpg" width="100" height="100"><br>
+  파일명:<span id="result"></span>
+  <script type="text/javascript">
+
+    let imgList = document.querySelectorAll("img");
+    let result = document.querySelector("#result");
+    let h1El = document.createElement("h1");
+
+    imgList.forEach((img) => {
+      img.addEventListener("mouseover", function() {
+        result.appendChild(h1El).innerText = img.getAttribute("src");
+      })
+    })
+
+  </script>
+</body>
+
+</html>

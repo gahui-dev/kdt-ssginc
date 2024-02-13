@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* arrow 함수
+      - 함수 선언식 또는 함수 표현식을 간편하게 표현하는 방법
+      - (자바 -> 표현, 람다함수)
+      - 자바스크립트  function 키워드 제외 =>
+    */
+
+    // 1-1. 함수 표현식
+    var fun = function () {
+      console.log("fun");
+    }
+    // 1-2. arrow 함수
+    var fun = () => {
+      console.log("arrow fun");
+    }
+
+    // 함수 호출은 동일
+    fun();
+
+
+    // 2-1. 함수 표현식
+    var fun2 = function (n1, n2 = 100) {
+      console.log("fun2", n1, n2);
+    };
+
+    // 2-2. arrow 함수
+    var fun2 = (n1, n2 = 100) => {
+      console.log("fun2", n1, n2);
+    }
+
+    fun2(10, 20);
+    fun2();
+
+    var fun2_1 = function (n) {
+      console.log("fun2_1", n);
+    }
+
+    var fun2_1 = (n) => {
+      console.log("fun2_1", n);
+    }
+
+    // 파라미터가 한 개인 경우에는 () 생략 가능
+    var fun2_1 = n => {
+      console.log("fun2_1", n);
+    }
+
+    // 실행문이 하나이면 {} 생략 가능
+    var fun2_1 = n => console.log("fun2_1", n);
+
+    // 3-1. 함수 표현식
+    var fun3 = function () {
+      console.log("fun3");
+      return 100;
+    }
+
+    // 3-2. arrow 함수
+    var fun3 = () => {
+      console.log("arrow fun3");
+      return 100;
+    }
+
+    // return 문장만 있는 경우 {}, return 키워드 생략 가능
+    var fun3 = () => 100;
+
+    fun3();
+
+    // 4-1. 함수 표현식
+    var fun4 = function (n1, n2) {
+      console.log("fun4", n1, n2);
+      return n1 + n2;
+    }
+
+    // 4-2. arrow 함수
+    // return 문장만 있는 경우 {}, return 키워드 생략 가능
+    var fun4 = (n1, n2) => n1 + n2;
+
+    fun4();
+
+  </script>
+</body>
+
+</html>

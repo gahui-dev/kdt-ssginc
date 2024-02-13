@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+</head>
+
+<body>
+  이미지선택하기<br>
+  <select onchange="change()">
+    <option>a.jpg</option>
+    <option>b.jpg</option>
+    <option>c.jpg</option>
+  </select>
+  <img src="a.jpg" width="100" height="100" id="my">
+
+  <script type="text/javascript">
+    let selectEl = document.querySelector("select");
+    let imgEl = document.querySelector("img");
+
+    function change() {
+      imgEl.src = selectEl.options[selectEl.selectedIndex].value;
+    }
+
+  </script>
+</body>
+
+</html>
