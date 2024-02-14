@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 조각 1 -->
+	<div th:fragment="menu-fragment">
+		<ul>
+			<li>top</li>
+			<li>dress</li>
+		</ul>
+	</div>
+	
+	<!-- 조각 2 -->
+	<div th:fragment="top-fragment">
+		<ul>
+			<li>signin</li>
+			<li>signout</li>
+		</ul>
+	</div>
+</body>
+</html>

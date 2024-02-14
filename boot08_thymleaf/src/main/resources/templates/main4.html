@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>main4.html</h2>
+	<h3>조건문</h3>
+	<div th:if="${username == '홍길동'}">1. 조건이 참일 때 실행</div>
+
+	<div th:if="${username != '홍길동'}">2. 조건이 참일 때 실행</div>
+
+	<div th:unless="${username == '홍길동2'}">3. 조건이 참일 때 실행</div>
+
+	<h3>switch 문</h3>
+
+	<div th:switch="${login.userid}">
+		<p th:case="이순신">이순신입니다 </p>
+		<p th:case="홍길동">홍길동입니다 </p>
+		<p th:case="*">default </p>
+	</div>
+	
+	<h3>반복문</h3>
+	<th:block th:each="x:${#numbers.sequence(1, 5)}">
+		<p th:text="'hello'"></p>
+	</th:block>
+	
+	<h3>반복문2</h3>
+	<th:block th:each="x:${list}">
+		<span th:text="${x.userid}"></span>
+		<span th:text="${x.passwd}"></span>
+	</th:block>
+	
+	<h3>반복문3 - </h3>
+	<th:block th:each="x, varStatus :${list}">
+		<span th:text="${varStatus.index} + 1"></span>
+		<span th:text="${varStatus.count}"></span>
+		<span th:text="${x.userid}"></span>
+		<span th:text="${x.passwd}"></span>
+	</th:block>
+</body>
+</html>
