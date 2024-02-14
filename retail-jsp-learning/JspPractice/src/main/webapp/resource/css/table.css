@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+table {
+	/* table width 값 조정하기 */
+	width: 1000px;
+	border-collapse: collapse;
+	background-color: #fff;
+}
+
+table tr th, table tr td {
+	border: 1px solid #ddd;
+	padding: 20px 20px;
+}
+
+table tr th {
+	text-align: center;
+}
+
+table tr td:first-child {
+	text-align: center;
+}

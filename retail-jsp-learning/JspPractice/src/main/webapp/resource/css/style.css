@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+* { margin:0 ; padding: 0; box-sizing: border-box;}
+a {text-decoration: none; color: inherit;}
+body { min-height: 100vh; }
+#wrap {min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 60px; background-color: #f2f3f4;}
+.readonly { background: #fbfbfb; border: 1px solid #e1e1e1; color: #a8a8a8;}
+input { padding: 20px; font-size: 1.2rem; }
+table { border-collapse: collapse; }
+table tr:last-child td { text-align: center;}
+
+button { padding: 16px 40px; border-radius: 6px; background-color: #D70C19; color: #f2f3f5; font-size: 1.06rem; font-weight: 600; border: none; margin: 0 20px; transition: all .2s; cursor: pointer;}
+button:hover { background-color: #c3141f;}
+
+header{ z-index: 1; width: 100%; height: 100px; background-color: #fff; border-bottom: 1px solid #f2f3f4; position: fixed; top: 0; left:0; right:0; display: flex; justify-content: space-between; align-items: center; padding: 0 60px;}
+header h1 { font-weight: 400; font-size: 1.6rem;}
+header h1 span { font-weight: 800;}
+header nav {display: flex; align-items: center;}
+header nav ul li {display: inline-block; margin: 0 30px; font-size: 1.2rem; transition: all .4s;}
+header nav ul li:hover a { color: #D70C19;}
+
+header table { width: 100%; text-align: center;}
+header table tr td { width: 20%; }
+
+main { background-color: #f2f3f4; height: 100vh; padding-top: 100px; display: flex; align-items: center; justify-content: center;}
+main img {width: 100%; height: 100%;}
+main form {width: 60%; background-color: #fff; padding: 60px 20px; border-radius: 12px;}
+main form input, main form select { width: 300px; padding: 10px 20px; font-size: 1.05rem; }
+main form h2 {text-align: center; margin-bottom: 60px;}
+main form table { width: 90%; margin: 0 auto }
+main form table tr { border-bottom: 1px solid #f2f3f4;}
+main form table tr:last-child {border-bottom: none;}
+main form table tr td {padding: 30px; font-size: 1.2rem}
+main form table tr td:last-child { text-align: center;}
+main form button { padding: 16px 80px}
+main form button[type=reset] {background-color: #f2f3f4; color: #000;}
+main form button[type=reset]:hover {background-color: #eee; }
+
+.main { background-image: url("../bg.jpg"); background-position: center; background-repeat: no-repeat; background-size: cover;}
+.main h1 { background-color: #f2f3f4; padding: 80px 120px; border-radius: 12px;}
+
+.loginForm { display: flex; align-items: center; flex-direction: column; width: 40%; gap: 20px; font-size: 1.2rem; margin-bottom: 80px; padding: 100px 60px; border-radius: 12px; background-color: #fff;}
+.loginForm h1 {font-size: 3rem; margin-bottom: 40px; }
+.loginForm .radioBox{ width: 100%; border: 1px solid red; display: flex; margin-bottom: 40px;}
+.loginForm .radioBox label {display: inline-block; width: 50%; padding: 16px 20px; text-align: center;}
+.loginForm .radioBox input[type=radio] {display: none;}
+.loginForm .label, .loginForm .label input { width: 100%; padding: 16px 20px;} 
+.loginForm input:checked + label { background-color: #D70C19; color: #f3f3f3; font-weight: 600; transition: all .3s;}
+.loginForm div:nth-child(3) { width: 100%; display: flex; flex-direction: column; gap: 40px; }
+.loginForm p { width: 100%; text-align: left; font-size: 0.95rem; color: #D70C19; padding-left: 10px;}
+.loginForm button { width: 100%; font-size: 1.2rem; margin-top: 40px;}

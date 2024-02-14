@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+/* 페이지네이션 */
+.pagination {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pagination ul {
+	margin: 0;
+	padding: 10px 40px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	background-color: #fff;
+	border-radius: 12px;
+}
+
+.pagination ul li {
+	padding: 10px 0;
+	text-align: center;
+}
+
+.pagination ul li a {
+	width: 100%;
+	padding: 10px;
+}
+
+.pagination ul li a.on {
+	padding: 10px 16px;
+	color: #fff;
+	background-color: #d70d19;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	border-radius: 20px;
+}
