@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- Cat 등록 -->
+	<bean id="cat1" class="com.dto.Cat">
+		<property name="name" value="야옹이" />
+		<property name="age" value="2" />
+	</bean>
+
+	<bean id="cat2" class="com.dto.Cat">
+		<property name="name" value="야옹이2" />
+		<property name="age" value="3" />
+	</bean>
+
+	<!-- UserService 등록 -->
+	<!-- 1 : N -->
+	<bean id="service2" class="com.service.UserService">
+		<property name="list">
+			<list>
+				<ref bean="cat1" />
+				<ref bean="cat2" />
+				<ref bean="cat1" />
+			</list>
+		</property>
+	</bean>
+
+	<util:list id="xxx">
+		<ref bean="cat1" />
+		<ref bean="cat2" />
+		<ref bean="cat1" />
+	</util:list>
+	
+	<bean id="service" class="com.service.UserService">
+		<property name="list">
+			<ref bean="xxx" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Cat 등록 -->
+	<bean id="cat1" class="com.dto.Cat">
+		<property name="name" value="야옹이" />
+		<property name="age" value="2" />
+	</bean>
+	
+	<bean id="cat2" class="com.dto.Cat">
+		<property name="name" value="야옹이2" />
+		<property name="age" value="3" />
+	</bean>
+	
+	<!-- UserService 등록 -->
+	<!-- 1 : N -->
+	<bean id="service" class="com.service.UserService">
+		<property name="map">
+		<map>
+			<entry key="c1" value-ref="cat1" />
+			<entry key="c2" >
+				<ref bean="cat2" />
+			</entry>
+		</map>
+		</property>
+	</bean>
+</beans>

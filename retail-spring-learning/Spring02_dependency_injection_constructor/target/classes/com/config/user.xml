@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 2. 빈을 xml에 등록  -->
+	<bean id="xxx2" class="com.service.DeptServiceImpl">
+		<!-- 의존성 주입 -->       
+		<!-- 생성자 통해서 주입 -->
+		
+		<!-- 생성자에 x 라는 변수에 yyy 넣기 -->
+		<!-- 값 => value(숫자, 문자) / ref(숫자, 문자 제외) -->
+		<constructor-arg name="x" ref="yyy"></constructor-arg>
+	</bean>
+	<bean id="yyy" class="com.dao.DeptDAO"></bean>
+	
+	<bean id="xxx" class="com.service.DeptServiceImpl">
+		<constructor-arg name="name" value="홍길동"></constructor-arg>
+		<constructor-arg name="x" ref="yyy"></constructor-arg>
+	</bean>
+</beans>

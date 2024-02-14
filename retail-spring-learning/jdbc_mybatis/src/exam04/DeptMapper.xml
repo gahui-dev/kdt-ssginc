@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="exam04.DeptMapper">
+
+
+
+
+ <resultMap type="DeptDTO" id="xxx">
+    <id property="no" column="deptno"/>
+    <result property="name" column="dname"/>
+    <result property="location" column="loc"/>
+ </resultMap>
+
+  <select id="findAllPage" resultType="DeptDTO">
+     select deptno as no , dname as name, loc as location
+     from dept
+     order by deptno desc
+  </select>
+
+  <select id="findAll" resultType="DeptDTO">
+     select deptno as no , dname as name, loc as location
+     from dept
+  </select>
+  
+  <select id="findAllOrder" resultMap="xxx">
+     select deptno, dname, loc
+     from dept
+     order by deptno desc
+  </select>
+ 
+  <!--  조건지정 1-->
+    <select id="findByDeptno" resultType="DeptDTO" 
+      parameterType="int">
+     select deptno , dname, loc
+     from dept
+     where deptno = #{search_deptno}
+  </select>
+  <!--  조건지정 2-->
+    <select id="findByDnameAndLoc" resultType="DeptDTO" 
+      parameterType="DeptDTO">
+     select deptno , dname, loc
+     from dept
+     where dname = #{dname} and loc = #{loc}
+  </select>
+  <!--  조건지정 3-->
+    <select id="findByDnameAndLocHashMap" resultType="DeptDTO" 
+      parameterType="hashmap">
+     select deptno , dname, loc
+     from dept
+     where dname = #{xxx} and loc = #{yyy}
+  </select>
+</mapper>
+
+
+

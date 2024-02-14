@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 2. 빈을 xml에 등록  -->
+	<bean id="xxx2" class="com.service.DeptServiceImpl">
+		<!-- name: 어디에 넣을지, value: 넣을 데이터 -->
+		<constructor-arg name="n" value="10"></constructor-arg>	
+	</bean>
+	
+	<bean id="xxx" class="com.service.DeptServiceImpl">
+		<constructor-arg name="n" value="10"></constructor-arg>	
+		<constructor-arg name="name" value="이가희"></constructor-arg>	
+	</bean>
+</beans>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="exam06.DeptMapper">
+
+	<!-- https://mybatis.org/mybatis-3/dynamic-sql.html -->
+	<!-- 멀티 insert -->
+	<insert id="multiInsert" parameterType="arraylist">
+		insert into dept(deptno, dname, loc)
+		values
+		<foreach item="dto" collection="list" separator=",">
+			(#{dto.deptno}, #{dto.dname}, #{dto.loc})
+		</foreach>
+	</insert>
+
+	<!-- 멀티 delete -->
+	<delete id="multiDelete" parameterType="arraylist">
+		delete from dept
+		where deptno IN
+		<foreach item="n" collection="list" open="(" close=")" separator=",">
+			#{n}
+		</foreach>
+	</delete>
+
+	<!-- 멀티 select -->
+	<select id="multiSelect" parameterType="arraylist" resultType="DeptDTO">
+		select deptno, dname, loc
+		from dept
+		where deptno IN
+		<foreach item="n" collection="list" open="(" close=")" separator=",">
+			#{n}
+		</foreach>
+	</select>
+	
+	<!-- 조건이 여러개 -->
+	<select id="multiChoose" parameterType="hashmap" resultType="DeptDTO">
+		select deptno, dname, loc
+		from dept
+		<if test="searchName=='deptno'">
+			where deptno = #{searchValue}
+		</if>
+		<if test="searchName=='dname'">
+			where dname = #{searchValue}
+		</if>
+	</select>
+	
+	<select id="multiChoose2" parameterType="hashmap" resultType="DeptDTO">
+		select deptno, dname, loc
+		from dept
+		<choose>
+			<when test="searchName=='deptno'">
+				where deptno = #{searchValue}
+			</when>
+			<when test="searchName=='dname'">
+				where dname = #{searchValue}
+			</when>
+			<otherwise>
+				order by deptno desc
+			</otherwise>
+		</choose>
+	</select>
+	
+	
+</mapper>
