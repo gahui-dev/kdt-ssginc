@@ -1,0 +1,51 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>게시판 목록</h3>
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>조회수</th>
+		</tr>
+		<th:block th:each="dto: ${pageDTO.list}">
+			<tr>
+				<td th:text="${dto.num}"></td>
+				<td><a th:href="@{retrieve(num=${dto.num})}"
+					th:text="${dto.title}"> </a></td>
+				<td th:text="${dto.author}">${dto.author}</td>
+				<td th:text="${dto.writeday}">${dto.writeday}</td>
+				<td th:text="${dto.readcnt}">${dto.readcnt}</td>
+			</tr>
+		</th:block>
+		<tr>
+			<td colspan="5"
+				th:with="totalCount=${pageDTO.totalCount},
+                  perPage=${pageDTO.perPage},
+                  curPage=${pageDTO.curPage},
+                  totalNum=${totalCount/perPage}">
+				<th:block th:if="${totalCount%perPage !=0 }">
+					<th:block th:with="totalNum=${totalNum+1}"></th:block>
+				</th:block> <th:block th:each="i:${#numbers.sequence(1, totalNum)}">
+					<span th:if="${curPage == i}"> [[${i}]]&nbsp; </span>
+					<span th:if="${curPage != i}"> <a
+						th:href="@{list(curPage=${i})}">[[${i}]]</a>&nbsp;
+					</span>
+				</th:block>
+			</td>
+		</tr>
+
+	</table>
+
+
+	<a href="write">글쓰기</a>
+
+</body>
+</html>

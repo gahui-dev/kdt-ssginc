@@ -1,0 +1,50 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js}"></script>
+<script th:inline="javascript">
+    $(document).ready(function(){
+    	
+    	$("form").on("submit", function(){
+    		//사용자 입력 유효성 체크 하기
+    		var result  = false;
+    		if(result){
+    			alert("사용자 입력 필수 입니다.")
+    			event.preventDefault();
+    		}
+    	});
+    	////////////////////////
+    	$("#btnUpdate").on("click", function(){
+    		 var f = $("#myForm")[0];
+  		   f.action="update";
+  		   f.method="post";
+    	});
+    	
+    	$("#btnDelete").on("click", function(){
+    		event.preventDefault();
+    		location.href="delete?num="+[[${board.num}]];
+    	});
+    	
+    });
+</script>
+</head>
+<body>
+<h3>글자세히 화면</h3>
+<form id="myForm" th:action="'#'" method="post" >
+<input type="hidden" name="num" th:value="${board.num}" >
+ 글번호:[[${board.num}]]&nbsp;&nbsp;
+작성일:[[${board.writeday}]]&nbsp;&nbsp;
+조회수:[[${board.readcnt}]]<br>
+  제목<input type="text" name="title" th:value="${board.title}"><br>
+ 작성자<input type="text" name="author" th:value="${board.author}"><br>
+ 내용<textarea rows="20" cols="20" name="content">[[${board.content}]]</textarea> 
+  <button id="btnUpdate">수정</button>
+  <button id="btnDelete">삭제</button>
+</form>
+
+ <a th:href="@{list}">목록</a>
+
+</body>
+</html>
