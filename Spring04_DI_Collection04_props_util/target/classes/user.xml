@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- UserService 등록 -->
+	<!-- 1 : N -->
+	<bean id="service2" class="com.service.UserService">
+		<property name="props">
+			<props>
+				<prop key="email1">aaa@naver.com</prop>
+				<prop key="email2">bbb@naver.com</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- util -->
+	<util:properties id="xxx">
+		<prop key="email1">aaa@naver.com</prop>
+		<prop key="email2">bbb@naver.com</prop>
+	</util:properties>
+	
+	<bean id="service" class="com.service.UserService">
+		<property name="props">
+			<ref bean="xxx" />
+		</property>
+	</bean>
+</beans>
