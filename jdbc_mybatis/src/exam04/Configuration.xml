@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+   <!-- jdbc.properties 등록 -->
+  <properties resource="exam04/jdbc.properties" />
+  
+  <!--  dto 별치 -->
+  <typeAliases>
+    <typeAlias type="exam04.DeptDTO" alias="DeptDTO"/>
+  </typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.userid}"/>
+        <property name="password" value="${jdbc.passwd}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="exam04/DeptMapper.xml"/>
+  </mappers>
+</configuration>
